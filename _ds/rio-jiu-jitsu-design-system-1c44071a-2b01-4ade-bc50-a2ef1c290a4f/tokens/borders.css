@@ -1,0 +1,22 @@
+:root{
+  --radius-0:0px;          /* default: the brand is square-cornered */
+  --radius-sm:2px;
+  --radius-md:4px;
+  --radius-pill:999px;     /* buttons only */
+
+  --border-hairline:1px solid var(--line-hairline);
+  --border-strong:1px solid var(--line-strong);
+  --border-accent:1px solid var(--line-accent);
+  --border-inverse:1px solid var(--line-inverse);
+  --rule-width:1px;
+
+  /* Elevation. The brand is near-flat; shadow is used sparingly on floating
+     photography and overlays only. */
+  --shadow-none:none;
+  --shadow-photo:0 18px 40px rgba(10,10,10,.14);
+  --shadow-overlay:0 24px 64px rgba(10,10,10,.28);
+  --shadow-inset-hairline:inset 0 0 0 1px var(--line-hairline);
+
+  --scrim-photo:linear-gradient(180deg,rgba(10,10,10,.28) 0%,rgba(10,10,10,.05) 45%,rgba(10,10,10,.32) 100%); /* @kind other */
+  --scrim-band:linear-gradient(180deg,rgba(10,10,10,.55),rgba(10,10,10,.55)); /* @kind other */
+}

@@ -1,0 +1,73 @@
+:root{
+  /* Base — ink */
+  --ink-900:#0a0a0a;
+  --ink-800:#1a1a1a;
+  --ink-700:#2b2b2b;
+  --ink-500:#444444;
+  --ink-400:#6b6b6b;
+  --ink-300:#9a9a9a;
+
+  /* Base — navy (logo field) */
+  --navy-900:#0c1729;
+  --navy-700:#142446;
+  --navy-500:#22375f;
+  --navy-200:#c3cbd8;
+
+  /* Base — moss (body copy + editorial headings) */
+  --moss-700:#2b3327;
+  --moss-500:#3e4939;
+  --moss-300:#7c8873;
+  --moss-100:#e3e6df;
+
+  /* Base — sand (line-icon + accent) */
+  --sand-700:#8c7f5f;
+  --sand-500:#aea17e;
+  --sand-300:#cbc2a8;
+  --sand-100:#eee9dd;
+
+  /* Base — paper */
+  --paper-000:#ffffff;
+  --paper-050:#faf9f7;
+  --paper-100:#f5f3f0;
+  --paper-200:#e8e5e0;
+  --paper-300:#d6d2cb;
+
+  /* Semantic — text */
+  --text-strong:var(--ink-900);
+  --text-body:var(--moss-500);
+  --text-muted:var(--ink-500);
+  --text-subtle:var(--ink-300);
+  --text-inverse:var(--paper-000);
+  --text-accent:var(--sand-500);
+  --text-link:var(--ink-900);
+  --text-link-hover:var(--sand-700);
+
+  /* Semantic — surface */
+  --surface-page:var(--paper-000);
+  --surface-muted:var(--paper-100);
+  --surface-card:var(--paper-000);
+  --surface-inverse:var(--ink-900);
+  --surface-brand:var(--navy-700);
+  --surface-accent-soft:var(--sand-100);
+  --surface-overlay:rgba(10,10,10,.45);
+
+  /* Semantic — line */
+  --line-hairline:var(--paper-200);
+  --line-strong:var(--ink-900);
+  --line-accent:var(--sand-500);
+  --line-inverse:rgba(255,255,255,.28);
+
+  /* Semantic — interactive */
+  --action-fill:var(--ink-900);
+  --action-fill-hover:var(--moss-700);
+  --action-fill-active:#000000;
+  --action-label:var(--paper-000);
+  --action-ghost-line:var(--ink-900);
+  --focus-ring:var(--sand-500);
+
+  /* Status — utility only; the brand site defines no status palette */
+  --status-info:var(--navy-500);
+  --status-success:#4a6b47;
+  --status-warning:var(--sand-700);
+  --status-danger:#8c3b30;
+}

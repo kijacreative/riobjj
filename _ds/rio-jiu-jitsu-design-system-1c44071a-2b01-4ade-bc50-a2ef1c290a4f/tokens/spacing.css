@@ -1,0 +1,24 @@
+:root{
+  --space-0:0px;
+  --space-1:4px;
+  --space-2:8px;
+  --space-3:12px;
+  --space-4:16px;
+  --space-5:24px;
+  --space-6:32px;
+  --space-7:48px;
+  --space-8:64px;
+  --space-9:96px;
+  --space-10:128px;
+  --space-11:160px;
+
+  /* Layout */
+  --container-max:1140px;
+  --container-narrow:720px;
+  --container-wide:1440px;
+  --gutter:24px;
+  --section-y:var(--space-10);
+  --section-y-tight:var(--space-9);
+  --stack-gap:var(--space-5);
+  --offset-overlap:56px;  /* offset-photo pair overlap */
+}
