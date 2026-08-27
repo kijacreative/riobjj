@@ -1,0 +1,9 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "rewrites": [
+    { "source": "/", "destination": "/Mat%20Pass%20Landing%20Page.html" },
+    { "source": "/mat-pass", "destination": "/Mat%20Pass%20Landing%20Page.html" }
+  ]
+}
