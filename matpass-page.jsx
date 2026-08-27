@@ -13,9 +13,23 @@ function Header() {
   </header>;
 }
 
+const HERO_VIMEO_ID = '1221819363';
+// background=1 gives autoplay + loop + muted with no controls or chrome.
+const HERO_VIMEO_SRC =
+  'https://player.vimeo.com/video/' + HERO_VIMEO_ID +
+  '?background=1&autoplay=1&loop=1&muted=1&autopause=0&playsinline=1';
+
 function HeroRotator() {
   return <div className="hero-stage">
-    <video className="hero-vid" src="assets/hero-video.mp4" autoPlay muted loop playsInline poster="assets/photos/membership-grapple.png"></video>
+    <iframe
+      className="hero-vid"
+      src={HERO_VIMEO_SRC}
+      title="Rio Jiu-Jitsu Lifestyle - The Mat Pass"
+      allow="autoplay; fullscreen; picture-in-picture"
+      referrerPolicy="strict-origin-when-cross-origin"
+      frameBorder="0"
+      tabIndex={-1}
+      aria-hidden="true"></iframe>
   </div>;
 }
 

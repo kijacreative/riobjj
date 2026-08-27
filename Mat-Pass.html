@@ -4,6 +4,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Rio Jiu-Jitsu — /mat-pass</title>
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<meta name="theme-color" content="#0a0a0a">
 <link rel="stylesheet" href="_ds/rio-jiu-jitsu-design-system-1c44071a-2b01-4ade-bc50-a2ef1c290a4f/tokens/fonts.css">
 <link rel="stylesheet" href="_ds/rio-jiu-jitsu-design-system-1c44071a-2b01-4ade-bc50-a2ef1c290a4f/tokens/colors.css">
 <link rel="stylesheet" href="_ds/rio-jiu-jitsu-design-system-1c44071a-2b01-4ade-bc50-a2ef1c290a4f/tokens/typography.css">
@@ -43,9 +47,9 @@ h1,h2,h3{text-wrap:pretty}
 
 /* hero */
 .hero{position:relative;min-height:min(880px,96vh);display:flex;flex-direction:column;background:var(--ink-900);overflow:hidden}
-.hero-stage{position:absolute;inset:0}
-.hero-vid{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.hero-scrim{position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,10,10,.62) 0%,rgba(10,10,10,.34) 42%,rgba(10,10,10,.78) 100%)}
+.hero-stage{position:absolute;inset:0;background:var(--ink-900) center/cover no-repeat url("assets/photos/hero-poster.jpg")}
+.hero-vid{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:auto;height:auto;min-width:100%;min-height:100%;aspect-ratio:16/9;border:0;pointer-events:none}
+.hero-scrim{position:absolute;inset:0;background:linear-gradient(90deg,rgba(10,10,10,.74) 0%,rgba(10,10,10,.52) 38%,rgba(10,10,10,0) 66%),linear-gradient(180deg,rgba(10,10,10,.62) 0%,rgba(10,10,10,.34) 42%,rgba(10,10,10,.78) 100%)}
 .hero-in{position:relative;z-index:2;flex:1;display:grid;grid-template-columns:1fr 384px;gap:var(--space-9);align-items:center;max-width:var(--container-max);margin:0 auto;width:100%;padding:var(--space-9) var(--gutter)}
 .hero-h1{font:var(--weight-hairline) clamp(40px,5.2vw,80px)/.98 var(--font-display);letter-spacing:var(--tracking-hero);color:var(--paper-000);margin:var(--space-5) 0 0}
 .hero-sub{font:var(--type-body);font-size:var(--text-lg);line-height:1.7;color:rgba(255,255,255,.82);max-width:46ch;margin:var(--space-6) 0 0}
