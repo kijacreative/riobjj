@@ -1,0 +1,103 @@
+<!-- RIO · 09 BOOK — map loads Leaflet from CDN, guarded so it only loads once.
+     The form is the design's placeholder: swap in Elementor Forms or the
+     real Wodify embed where marked. -->
+<div class="rjj rjj-band rjj-band--ink rjj-booksec" id="rjj-book">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha384-sHL9NAb7lN7rfvG5lfHpm643Xkcjzp4jFvuavGOndn6pjVqS6ny56CAt3nsEVT4H" crossorigin="anonymous">
+<style>
+.rjj-bookgrid{display:grid;grid-template-columns:1fr 420px;gap:var(--rjj-space-10);align-items:start}
+.rjj-book__h{font:var(--rjj-weight-hairline) clamp(36px,4.4vw,60px)/1 var(--rjj-font-display);letter-spacing:var(--rjj-tracking-hero);color:var(--rjj-paper-000);margin:var(--rjj-space-5) 0 0}
+.rjj-book__p{font:var(--rjj-type-body);color:rgba(255,255,255,.76);max-width:52ch;margin:var(--rjj-space-6) 0 0;line-height:1.8}
+.rjj-book__meta{display:grid;grid-template-columns:1fr 1fr;gap:var(--rjj-space-6);margin-top:var(--rjj-space-8);border-top:1px solid rgba(255,255,255,.22);padding-top:var(--rjj-space-6)}
+.rjj-bm__k{display:block;font:var(--rjj-type-eyebrow);letter-spacing:var(--rjj-tracking-eyebrow);text-transform:uppercase;color:rgba(255,255,255,.55)}
+.rjj-bm__v{display:block;margin-top:var(--rjj-space-3);font:var(--rjj-type-body-sm);font-size:var(--rjj-text-sm);line-height:1.7;color:rgba(255,255,255,.85)}
+.rjj-bm__tel{font:var(--rjj-weight-medium) 22px/1.2 var(--rjj-font-display);color:var(--rjj-paper-000)}
+.rjj-bm__tel:hover{color:var(--rjj-sand-500)}
+.rjj-map{position:relative;margin-top:var(--rjj-space-7);height:240px;overflow:hidden}
+.rjj-map__canvas{position:absolute;inset:0;filter:grayscale(1) contrast(.92) brightness(.86)}
+.rjj-map__canvas .leaflet-container{background:var(--rjj-ink-900)}
+.rjj-map__canvas .leaflet-control-attribution{font-size:9px}
+.rjj-map__lab{position:absolute;left:0;bottom:0;z-index:500;background:var(--rjj-ink-900);color:var(--rjj-paper-000);font:var(--rjj-type-eyebrow);letter-spacing:var(--rjj-tracking-eyebrow);text-transform:uppercase;padding:10px 16px}
+.rjj-bf__eb{font:var(--rjj-type-eyebrow);letter-spacing:var(--rjj-tracking-eyebrow);text-transform:uppercase;color:var(--rjj-sand-700);margin-bottom:var(--rjj-space-6)}
+.rjj-bf{display:flex;flex-direction:column;gap:var(--rjj-space-5)}
+.rjj-bf .rjj-btn{margin-top:8px}
+.rjj-bf__note{font:var(--rjj-type-body-sm);font-size:var(--rjj-text-xs);line-height:1.7;color:var(--rjj-text-subtle);margin:0}
+@media (max-width:1080px){ .rjj-bookgrid{grid-template-columns:1fr;gap:var(--rjj-space-8)} }
+@media (max-width:640px){ .rjj-book__meta{grid-template-columns:1fr} }
+</style>
+
+  <div class="rjj-wrap rjj-bookgrid">
+    <div>
+      <div class="rjj-eyebrow rjj-eyebrow--inverse">Step one of one</div>
+      <h2 class="rjj-book__h">Claim the $25 mat pass</h2>
+      <p class="rjj-book__p">Two classes, loaner gi, no contract. Pick a class now or leave us your details and a coach will call you today to find one that fits.</p>
+      <div class="rjj-book__meta">
+        <div><span class="rjj-bm__k">Where</span><span class="rjj-bm__v">6465 E. Mockingbird Lane.<br>Suite 350. Dallas, Tx</span></div>
+        <div><span class="rjj-bm__k">Phone</span><a class="rjj-bm__v rjj-bm__tel" href="tel:945269010">945-269-010</a></div>
+      </div>
+      <div class="rjj-map">
+        <div class="rjj-map__canvas" data-rjj-map></div>
+        <span class="rjj-map__lab">Map · Lake Highlands, Dallas</span>
+      </div>
+    </div>
+
+    <div class="rjj-card">
+      <div class="rjj-bf__eb">Book your first class</div>
+      <!-- ▼▼ REPLACE FROM HERE with Elementor Forms or the Wodify embed ▼▼ -->
+      <div class="rjj-bf">
+        <label class="rjj-field"><span>First name</span><input type="text" placeholder="Marcus"></label>
+        <label class="rjj-field"><span>Mobile</span><input type="tel" placeholder="(214) 555-0100"></label>
+        <label class="rjj-field"><span>Email</span><input type="email" placeholder="you@email.com"></label>
+        <label class="rjj-field"><span>Which class do you want first?</span>
+          <span class="rjj-selwrap">
+            <select>
+              <option value="a">Fundamentals — weekday 6:30pm</option>
+              <option value="b">Fundamentals — weekday 6:00am</option>
+              <option value="c">Fundamentals — Saturday 9:00am</option>
+              <option value="d">No-Gi — weekday 12:00pm</option>
+              <option value="e">I have trained before — open mat</option>
+            </select>
+          </span>
+        </label>
+        <button type="button" class="rjj-btn rjj-btn--block">Pay $25 and book</button>
+        <p class="rjj-bf__note">Wodify booking embed sits here in the build. <span class="rjj-mono">utm_source</span> and <span class="rjj-mono">gclid</span> pass through as hidden fields.</p>
+      </div>
+      <!-- ▲▲ REPLACE TO HERE ▲▲ -->
+    </div>
+  </div>
+
+<script>
+(function(){
+  var s = document.currentScript;
+  var root = s ? s.closest('.rjj-booksec')
+              : document.querySelector('.rjj-booksec:not([data-rjj-init])');
+  if (!root || root.dataset.rjjInit) return;
+  root.dataset.rjjInit = '1';
+
+  var el = root.querySelector('[data-rjj-map]');
+  if (!el) return;
+  var LAT = 32.8377, LON = -96.7462;
+
+  function draw(){
+    if (!window.L || el.dataset.drawn) return;
+    el.dataset.drawn = '1';
+    var map = L.map(el, {center:[LAT,LON], zoom:14, scrollWheelZoom:false,
+                         zoomControl:false, attributionControl:true});
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+                {attribution:'&copy; OpenStreetMap contributors'}).addTo(map);
+    L.circleMarker([LAT,LON], {radius:8, color:'#fff', weight:2,
+                               fillColor:'#000', fillOpacity:1}).addTo(map);
+  }
+
+  if (window.L) { draw(); return; }
+  var existing = document.querySelector('script[data-rjj-leaflet]');
+  if (existing) { existing.addEventListener('load', draw); return; }
+  var tag = document.createElement('script');
+  tag.src = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js';
+  tag.integrity = 'sha384-cxOPjt7s7Iz04uaHJceBmS+qpjv2JkIHNVcuOrM+YHwZOmJGBXI00mdUXEq65HTH';
+  tag.crossOrigin = 'anonymous';
+  tag.setAttribute('data-rjj-leaflet','1');
+  tag.onload = draw;
+  document.head.appendChild(tag);
+})();
+</script>
+</div>

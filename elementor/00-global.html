@@ -1,0 +1,108 @@
+<!-- ═══════════════════════════════════════════════════════════════════
+     RIO JIU-JITSU · MAT PASS — 00 GLOBAL  (paste this ONCE, first)
+     Fonts + design tokens + shared component styles.
+     Everything is scoped to .rjj so it cannot touch your theme.
+     ═══════════════════════════════════════════════════════════════ -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jost:wght@200;300;400;500;600&family=Lato:wght@300;400;700&display=swap">
+
+<style>
+/* ── design tokens ─────────────────────────────────────────────── */
+.rjj{
+  --rjj-ink-900:#0a0a0a; --rjj-ink-700:#2b2b2b; --rjj-ink-500:#444;
+  --rjj-ink-300:#9a9a9a;
+  --rjj-moss-700:#2b3327; --rjj-moss-500:#3e4939;
+  --rjj-sand-700:#8c7f5f; --rjj-sand-500:#aea17e; --rjj-sand-300:#cbc2a8;
+  --rjj-paper-000:#fff; --rjj-paper-100:#f5f3f0; --rjj-paper-200:#e8e5e0;
+
+  --rjj-text-strong:var(--rjj-ink-900);
+  --rjj-text-body:var(--rjj-moss-500);
+  --rjj-text-muted:var(--rjj-ink-500);
+  --rjj-text-subtle:var(--rjj-ink-300);
+  --rjj-text-link:var(--rjj-ink-900);
+  --rjj-text-link-hover:var(--rjj-sand-700);
+  --rjj-line-hairline:var(--rjj-paper-200);
+  --rjj-surface-card:var(--rjj-paper-000);
+  --rjj-action-fill:var(--rjj-ink-900);
+  --rjj-action-fill-hover:var(--rjj-moss-700);
+  --rjj-action-label:var(--rjj-paper-000);
+  --rjj-focus-ring:var(--rjj-sand-500);
+
+  --rjj-font-display:"Jost","Century Gothic",Futura,system-ui,sans-serif;
+  --rjj-font-ui:var(--rjj-font-display);
+  --rjj-font-body:"Lato","Helvetica Neue",Helvetica,sans-serif;
+  --rjj-font-mono:ui-monospace,"SFMono-Regular",Menlo,monospace;
+
+  --rjj-weight-hairline:200; --rjj-weight-light:300;
+  --rjj-weight-regular:400; --rjj-weight-medium:500;
+
+  --rjj-text-h3:24px; --rjj-text-section:19px; --rjj-text-lg:18px;
+  --rjj-text-md:16px; --rjj-text-sm:14px; --rjj-text-xs:12px;
+  --rjj-text-eyebrow:12px;
+
+  --rjj-leading-snug:1.35; --rjj-leading-body:1.85;
+  --rjj-tracking-hero:-.02em; --rjj-tracking-section:.14em;
+  --rjj-tracking-eyebrow:.22em; --rjj-tracking-button:.06em;
+
+  --rjj-type-body:var(--rjj-weight-regular) var(--rjj-text-md)/var(--rjj-leading-body) var(--rjj-font-body);
+  --rjj-type-body-sm:var(--rjj-weight-regular) var(--rjj-text-sm)/var(--rjj-leading-body) var(--rjj-font-body);
+  --rjj-type-eyebrow:var(--rjj-weight-medium) var(--rjj-text-eyebrow)/1.4 var(--rjj-font-ui);
+
+  --rjj-space-2:8px;  --rjj-space-3:12px; --rjj-space-4:16px;
+  --rjj-space-5:24px; --rjj-space-6:32px; --rjj-space-7:48px;
+  --rjj-space-8:64px; --rjj-space-9:96px; --rjj-space-10:128px;
+
+  --rjj-container-max:1140px; --rjj-container-narrow:720px; --rjj-gutter:24px;
+  --rjj-radius-0:0px; --rjj-radius-pill:999px; --rjj-rule-width:1px;
+  --rjj-duration-base:220ms; --rjj-ease-standard:cubic-bezier(.4,0,.2,1);
+  --rjj-transition-base:all var(--rjj-duration-base) var(--rjj-ease-standard);
+}
+
+/* ── scoped reset ──────────────────────────────────────────────────
+   The element resets use :where(), which has ZERO specificity, so every
+   component class below — and any override you add in Elementor — beats
+   them. Written as plain `.rjj p {}` these would out-rank single-class
+   rules (0-1-1 vs 0-1-0) and silently eat their margins and link colours. */
+.rjj,.rjj *,.rjj *::before,.rjj *::after{box-sizing:border-box}
+.rjj{font:var(--rjj-type-body);color:var(--rjj-text-body);text-align:left;-webkit-font-smoothing:antialiased}
+:where(.rjj) :where(p,h1,h2,h3,h4,figure,blockquote){margin:0}
+:where(.rjj) :where(h1,h2,h3){font-family:var(--rjj-font-display);text-wrap:pretty}
+:where(.rjj) :where(img){display:block;max-width:100%}
+:where(.rjj) :where(a){color:var(--rjj-text-link);text-decoration:none;transition:color var(--rjj-duration-base) var(--rjj-ease-standard)}
+:where(.rjj) :where(a):hover{color:var(--rjj-text-link-hover)}
+.rjj :focus-visible{outline:2px solid var(--rjj-focus-ring);outline-offset:3px}
+.rjj ::selection{background:var(--rjj-sand-300);color:var(--rjj-ink-900)}
+
+/* ── layout ────────────────────────────────────────────────────── */
+.rjj-wrap{max-width:var(--rjj-container-max);margin:0 auto;padding:0 var(--rjj-gutter)}
+.rjj-band{padding:var(--rjj-space-10) 0}
+.rjj-band--paper{background:var(--rjj-paper-000)}
+.rjj-band--muted{background:var(--rjj-paper-100)}
+.rjj-band--ink{background:var(--rjj-ink-900)}
+.rjj-rule{width:48px;border-top:1px solid var(--rjj-sand-500);margin:var(--rjj-space-6) 0}
+.rjj-lede{font:var(--rjj-type-body);font-size:var(--rjj-text-lg);max-width:64ch;margin:0}
+.rjj-lede strong{color:var(--rjj-text-strong);font-weight:700}
+.rjj-note{font:var(--rjj-type-body-sm);font-size:var(--rjj-text-sm);color:var(--rjj-text-muted);max-width:74ch;margin:var(--rjj-space-5) 0 0}
+.rjj-mono{font-family:var(--rjj-font-mono);font-size:.92em}
+
+/* ── design-system components (were React, now plain CSS) ──────── */
+.rjj-eyebrow{font:var(--rjj-type-eyebrow);letter-spacing:var(--rjj-tracking-eyebrow);text-transform:uppercase;color:var(--rjj-text-muted)}
+.rjj-eyebrow--inverse{color:rgba(255,255,255,.82)}
+.rjj-h2{font-size:var(--rjj-text-section);font-weight:var(--rjj-weight-medium);letter-spacing:var(--rjj-tracking-section);line-height:var(--rjj-leading-snug);text-transform:uppercase;color:var(--rjj-text-strong)}
+.rjj-hr{border:0;border-top:var(--rjj-rule-width) solid var(--rjj-line-hairline);margin:22px 0;width:auto}
+.rjj-btn{display:inline-flex;align-items:center;justify-content:center;gap:var(--rjj-space-2);font-family:var(--rjj-font-ui);font-weight:var(--rjj-weight-regular);font-size:var(--rjj-text-md);letter-spacing:var(--rjj-tracking-button);border-radius:var(--rjj-radius-pill);border:1px solid transparent;padding:17px 42px;background:var(--rjj-action-fill);color:var(--rjj-action-label);cursor:pointer;text-decoration:none;white-space:nowrap;transition:var(--rjj-transition-base)}
+.rjj-btn:hover{background:var(--rjj-action-fill-hover);color:var(--rjj-action-label)}
+.rjj-btn--block{width:100%}
+.rjj-card{background:var(--rjj-surface-card);color:var(--rjj-text-body);border:1px solid var(--rjj-line-hairline);border-radius:var(--rjj-radius-0);padding:var(--rjj-space-7)}
+.rjj-field{display:block}
+.rjj-field > span:not(.rjj-selwrap){display:block;font:var(--rjj-type-eyebrow);letter-spacing:var(--rjj-tracking-eyebrow);text-transform:uppercase;color:var(--rjj-text-muted);margin-bottom:var(--rjj-space-2)}
+.rjj-field input,.rjj-field select{width:100%;font:var(--rjj-type-body-sm);line-height:1.4;color:var(--rjj-text-strong);background:var(--rjj-paper-000);border:1px solid var(--rjj-line-hairline);border-radius:var(--rjj-radius-0);padding:13px 14px;outline:none;transition:var(--rjj-transition-base)}
+.rjj-field input:focus,.rjj-field select:focus{border-color:var(--rjj-sand-500)}
+.rjj-selwrap{display:block;position:relative}
+.rjj-selwrap select{appearance:none;-webkit-appearance:none;padding-right:38px}
+.rjj-selwrap::after{content:"";position:absolute;right:14px;top:50%;width:8px;height:8px;margin-top:-3px;border-right:1px solid var(--rjj-ink-500);border-bottom:1px solid var(--rjj-ink-500);transform:translateY(-50%) rotate(45deg);pointer-events:none}
+
+@media (max-width:860px){ .rjj-band{padding:var(--rjj-space-9) 0} }
+@media (prefers-reduced-motion:reduce){ .rjj *{transition:none!important;animation:none!important} }
+</style>

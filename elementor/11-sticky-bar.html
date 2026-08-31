@@ -1,0 +1,18 @@
+<!-- RIO · 11 STICKY MOBILE CTA — fixed bar, only shows at ≤640px.
+     Paste last. It reserves space at the bottom of the page for itself. -->
+<div class="rjj rjj-sticky">
+<style>
+.rjj-sticky{display:none;position:fixed;left:0;right:0;bottom:0;z-index:9999;background:var(--rjj-ink-900);border-top:1px solid rgba(255,255,255,.18);padding:10px 12px;gap:10px}
+.rjj-sticky a{flex:1;display:flex;align-items:center;justify-content:center;min-height:52px;border-radius:var(--rjj-radius-pill);font:var(--rjj-weight-medium) var(--rjj-text-sm)/1 var(--rjj-font-display);letter-spacing:.1em;text-transform:uppercase}
+.rjj-sticky__call{border:1px solid rgba(255,255,255,.55);color:var(--rjj-paper-000)}
+.rjj-sticky__call:hover{color:var(--rjj-paper-000)}
+.rjj-sticky__cta{background:var(--rjj-paper-000);color:var(--rjj-ink-900)}
+.rjj-sticky__cta:hover{color:var(--rjj-ink-900)}
+@media (max-width:640px){
+  .rjj-sticky{display:flex}
+  body:has(.rjj-sticky){padding-bottom:76px}
+}
+</style>
+  <a class="rjj-sticky__call" href="tel:945269010">Call</a>
+  <a class="rjj-sticky__cta" href="#rjj-book">Claim $25 mat pass</a>
+</div>

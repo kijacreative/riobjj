@@ -1,0 +1,67 @@
+<!-- RIO · 08 FAQ — self-contained single-open accordion (no libraries). -->
+<div class="rjj rjj-band rjj-band--paper rjj-faqsec">
+<style>
+.rjj-faqwrap{max-width:var(--rjj-container-narrow)}
+.rjj-faq{margin-top:var(--rjj-space-7);border-top:1px solid var(--rjj-line-hairline)}
+.rjj-faq__r{border-bottom:1px solid var(--rjj-line-hairline)}
+.rjj-faq__q{width:100%;display:flex;align-items:center;justify-content:space-between;gap:var(--rjj-space-5);background:none;border:0;padding:var(--rjj-space-5) 0;cursor:pointer;text-align:left;font:var(--rjj-weight-medium) var(--rjj-text-lg)/1.4 var(--rjj-font-display);color:var(--rjj-text-strong);letter-spacing:.01em;transition:var(--rjj-transition-base)}
+.rjj-faq__q:hover{color:var(--rjj-sand-700)}
+.rjj-faq__s{font:var(--rjj-weight-light) 22px/1 var(--rjj-font-display);color:var(--rjj-sand-700)}
+.rjj-faq__a{font:var(--rjj-type-body-sm);font-size:var(--rjj-text-sm);line-height:1.8;margin:0 0 var(--rjj-space-6);max-width:70ch}
+.rjj-faq__a[hidden]{display:none}
+</style>
+  <div class="rjj-wrap rjj-faqwrap">
+    <h2 class="rjj-h2">Questions adults actually ask</h2>
+    <div class="rjj-rule"></div>
+    <div class="rjj-faq" data-rjj-faq>
+      <div class="rjj-faq__r">
+        <button type="button" class="rjj-faq__q" aria-expanded="true"><span>Do I need my own gi?</span><span class="rjj-faq__s" aria-hidden="true">–</span></button>
+        <p class="rjj-faq__a">No. We lend you a clean gi for both classes on your mat pass. If you decide to keep training, we will point you at the right one to buy rather than sell you ours.</p>
+      </div>
+      <div class="rjj-faq__r">
+        <button type="button" class="rjj-faq__q" aria-expanded="false"><span>What if I am not fit enough?</span><span class="rjj-faq__s" aria-hidden="true">+</span></button>
+        <p class="rjj-faq__a" hidden>There is no fitness requirement and no test. You set your own pace in the warm-up and in practice rounds, and the coach will tell you when to sit one out.</p>
+      </div>
+      <div class="rjj-faq__r">
+        <button type="button" class="rjj-faq__q" aria-expanded="false"><span>Will I get injured?</span><span class="rjj-faq__s" aria-hidden="true">+</span></button>
+        <p class="rjj-faq__a" hidden>Jiu-Jitsu has no striking. Beginners drill with coaches and upper belts, at slow speed, with taps respected immediately. Bruises happen; injuries are rare and we take them seriously.</p>
+      </div>
+      <div class="rjj-faq__r">
+        <button type="button" class="rjj-faq__q" aria-expanded="false"><span>Can I use both classes in one week?</span><span class="rjj-faq__s" aria-hidden="true">+</span></button>
+        <p class="rjj-faq__a" hidden>Yes, or spread them over a month. Book the first one online and we will schedule the second with you after class.</p>
+      </div>
+      <div class="rjj-faq__r">
+        <button type="button" class="rjj-faq__q" aria-expanded="false"><span>What happens after the two classes?</span><span class="rjj-faq__s" aria-hidden="true">+</span></button>
+        <p class="rjj-faq__a" hidden>We talk, once. Memberships run month to month with no contract, and if it is not for you, that is a completely acceptable answer.</p>
+      </div>
+      <div class="rjj-faq__r">
+        <button type="button" class="rjj-faq__q" aria-expanded="false"><span>Is there parking?</span><span class="rjj-faq__s" aria-hidden="true">+</span></button>
+        <p class="rjj-faq__a" hidden>Free surface parking at the Suite 350 entrance on E. Mockingbird Lane. The mat is on the ground floor.</p>
+      </div>
+    </div>
+  </div>
+
+<script>
+(function(){
+  var s = document.currentScript;
+  var root = s ? s.closest('.rjj-faqsec')
+              : document.querySelector('.rjj-faqsec:not([data-rjj-init])');
+  if (!root || root.dataset.rjjInit) return;
+  root.dataset.rjjInit = '1';
+
+  var rows = [].slice.call(root.querySelectorAll('.rjj-faq__r'));
+  function set(row, open){
+    row.querySelector('.rjj-faq__q').setAttribute('aria-expanded', open ? 'true' : 'false');
+    row.querySelector('.rjj-faq__s').textContent = open ? '–' : '+';
+    row.querySelector('.rjj-faq__a').hidden = !open;
+  }
+  rows.forEach(function(row){
+    row.querySelector('.rjj-faq__q').addEventListener('click', function(){
+      var wasOpen = row.querySelector('.rjj-faq__q').getAttribute('aria-expanded') === 'true';
+      rows.forEach(function(r){ set(r, false); });   /* single-open, like the design */
+      set(row, !wasOpen);
+    });
+  });
+})();
+</script>
+</div>

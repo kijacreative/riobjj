@@ -1,0 +1,87 @@
+<!-- RIO · 01 HERO — needs 00-global pasted once, anywhere above. -->
+<div class="rjj rjj-hero">
+<style>
+.rjj-hero{position:relative;min-height:min(880px,96vh);display:flex;flex-direction:column;background:var(--rjj-ink-900);overflow:hidden}
+.rjj-hero__stage{position:absolute;inset:0;background:var(--rjj-ink-900) center/cover no-repeat url("{{ASSETS}}/hero-poster.jpg")}
+.rjj-hero__vid{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:auto;height:auto;min-width:100%;min-height:100%;aspect-ratio:16/9;border:0;pointer-events:none}
+.rjj-hero__scrim{position:absolute;inset:0;background:linear-gradient(90deg,rgba(10,10,10,.74) 0%,rgba(10,10,10,.52) 38%,rgba(10,10,10,0) 66%),linear-gradient(180deg,rgba(10,10,10,.62) 0%,rgba(10,10,10,.34) 42%,rgba(10,10,10,.78) 100%)}
+.rjj-head{position:relative;z-index:2;display:flex;align-items:center;justify-content:space-between;gap:var(--rjj-space-6);max-width:var(--rjj-container-max);margin:0 auto;padding:var(--rjj-space-6) var(--rjj-gutter) 0;width:100%}
+.rjj-head__mark{height:44px;width:auto}
+.rjj-head__r{display:flex;align-items:center;gap:var(--rjj-space-6)}
+.rjj-head__loc{font:var(--rjj-type-eyebrow);letter-spacing:var(--rjj-tracking-eyebrow);text-transform:uppercase;color:rgba(255,255,255,.72)}
+.rjj-head__tel{font:var(--rjj-weight-medium) var(--rjj-text-md)/1 var(--rjj-font-display);color:var(--rjj-paper-000);letter-spacing:.02em}
+.rjj-head__tel:hover{color:var(--rjj-sand-500)}
+.rjj-hero__in{position:relative;z-index:2;flex:1;display:grid;grid-template-columns:1fr 384px;gap:var(--rjj-space-9);align-items:center;max-width:var(--rjj-container-max);margin:0 auto;width:100%;padding:var(--rjj-space-9) var(--rjj-gutter)}
+.rjj-hero__h1{font:var(--rjj-weight-hairline) clamp(40px,5.2vw,80px)/.98 var(--rjj-font-display);letter-spacing:var(--rjj-tracking-hero);color:var(--rjj-paper-000);margin:var(--rjj-space-5) 0 0}
+.rjj-hero__sub{font:var(--rjj-type-body);font-size:var(--rjj-text-lg);line-height:1.7;color:rgba(255,255,255,.82);max-width:46ch;margin:var(--rjj-space-6) 0 0}
+.rjj-offer{background:var(--rjj-paper-000);padding:var(--rjj-space-7);border-radius:var(--rjj-radius-0)}
+.rjj-offer__eb{font:var(--rjj-type-eyebrow);letter-spacing:var(--rjj-tracking-eyebrow);text-transform:uppercase;color:var(--rjj-sand-700)}
+.rjj-offer__price{display:flex;align-items:baseline;gap:14px;margin-top:var(--rjj-space-4)}
+.rjj-offer__num{font:var(--rjj-weight-light) 76px/1 var(--rjj-font-display);color:var(--rjj-text-strong);letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+.rjj-offer__unit{font:var(--rjj-weight-medium) var(--rjj-text-md)/1.2 var(--rjj-font-display);letter-spacing:.12em;text-transform:uppercase;color:var(--rjj-text-muted)}
+.rjj-offer__list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
+.rjj-offer__list li{font:var(--rjj-type-body-sm);font-size:var(--rjj-text-sm);color:var(--rjj-text-body);padding-left:24px;position:relative}
+.rjj-offer__list li::before{content:"";position:absolute;left:0;top:.72em;width:14px;border-top:1px solid var(--rjj-sand-500)}
+.rjj-offer .rjj-btn{margin-top:28px}
+.rjj-offer__call{display:block;text-align:center;margin-top:var(--rjj-space-4);font:var(--rjj-type-body-sm);font-size:var(--rjj-text-sm);color:var(--rjj-text-muted)}
+.rjj-proof{position:relative;z-index:2;border-top:1px solid rgba(255,255,255,.24);background:rgba(10,10,10,.42)}
+.rjj-proof__in{display:flex;flex-wrap:wrap;gap:var(--rjj-space-4) var(--rjj-space-8);padding:var(--rjj-space-5) var(--rjj-gutter)}
+.rjj-proof__i{font:var(--rjj-type-body-sm);font-size:var(--rjj-text-sm);color:rgba(255,255,255,.7)}
+.rjj-proof__i b{color:var(--rjj-paper-000);font-weight:700}
+@media (max-width:1080px){ .rjj-hero__in{grid-template-columns:1fr 340px} }
+@media (max-width:860px){ .rjj-hero__in{grid-template-columns:1fr} .rjj-head__loc{display:none} }
+@media (max-width:640px){
+  .rjj-hero{min-height:0}
+  .rjj-hero__in{padding-top:var(--rjj-space-7)}
+  .rjj-hero__h1{font-size:clamp(34px,10vw,46px)}
+  .rjj-offer{padding:var(--rjj-space-6)}
+}
+</style>
+
+  <div class="rjj-hero__stage">
+    <iframe class="rjj-hero__vid"
+            src="https://player.vimeo.com/video/1221819363?background=1&amp;autoplay=1&amp;loop=1&amp;muted=1&amp;autopause=0&amp;playsinline=1"
+            title="Rio Jiu-Jitsu Lifestyle · The Mat Pass"
+            allow="autoplay; fullscreen; picture-in-picture"
+            referrerpolicy="strict-origin-when-cross-origin"
+            frameborder="0" tabindex="-1" aria-hidden="true"></iframe>
+  </div>
+  <div class="rjj-hero__scrim"></div>
+
+  <header class="rjj-head">
+    <img class="rjj-head__mark" src="{{ASSETS}}/logo-mark-white.png" alt="Rio Jiu-Jitsu" width="44" height="44">
+    <div class="rjj-head__r">
+      <span class="rjj-head__loc">6465 E. Mockingbird Lane. Suite 350. Dallas, Tx</span>
+      <a class="rjj-head__tel" href="tel:945269010">945-269-010</a>
+    </div>
+  </header>
+
+  <div class="rjj-hero__in">
+    <div>
+      <div class="rjj-eyebrow rjj-eyebrow--inverse">Rio Jiu-Jitsu Lifestyle · The Mat Pass</div>
+      <h1 class="rjj-hero__h1">Two classes.<br>Twenty‑five dollars.<br>No experience required.</h1>
+      <p class="rjj-hero__sub">Rio Jiu-Jitsu in Lake Highlands. Walk in knowing nothing, leave knowing something. We’ll lend you the gi.</p>
+    </div>
+
+    <div class="rjj-offer">
+      <div class="rjj-offer__eb">New client offer</div>
+      <div class="rjj-offer__price"><span class="rjj-offer__num">$25</span><span class="rjj-offer__unit">2 classes</span></div>
+      <hr class="rjj-hr">
+      <ul class="rjj-offer__list">
+        <li>Loaner gi included</li>
+        <li>No contract, no sales pitch</li>
+        <li>Book any adult class on the schedule</li>
+      </ul>
+      <a class="rjj-btn rjj-btn--block" href="#rjj-book">Claim my mat pass</a>
+      <a class="rjj-offer__call" href="tel:945269010">or call 945-269-010</a>
+    </div>
+  </div>
+
+  <div class="rjj-proof">
+    <div class="rjj-wrap rjj-proof__in">
+      <span class="rjj-proof__i"><b>4.9</b> average · 180+ Google reviews</span>
+      <span class="rjj-proof__i"><b>13k</b> on Instagram</span>
+      <span class="rjj-proof__i"><b>Open 7 days</b> · classes morning and evening</span>
+    </div>
+  </div>
+</div>

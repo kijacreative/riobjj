@@ -1,0 +1,152 @@
+<!-- RIO · 06 COACHES — includes a self-contained video modal (no libraries). -->
+<div class="rjj rjj-band rjj-band--paper rjj-coaches" style="padding-top:0">
+<style>
+.rjj-coachgrid{display:grid;grid-template-columns:1fr 1fr;gap:var(--rjj-space-10);align-items:center;border-top:1px solid var(--rjj-line-hairline);padding-top:var(--rjj-space-10)}
+.rjj-roster{min-width:0;align-self:start;border-top:1px solid var(--rjj-ink-900);padding-top:var(--rjj-space-6)}
+.rjj-roster__eb{font:var(--rjj-type-eyebrow);letter-spacing:var(--rjj-tracking-eyebrow);text-transform:uppercase;color:var(--rjj-sand-700)}
+.rjj-roster__l{margin-top:var(--rjj-space-6);display:flex;flex-direction:column}
+.rjj-roster__r{display:flex;justify-content:space-between;align-items:baseline;gap:var(--rjj-space-5);padding:14px 0;border-bottom:1px solid var(--rjj-line-hairline)}
+.rjj-roster__n{font:var(--rjj-weight-medium) var(--rjj-text-md)/1.3 var(--rjj-font-display);color:var(--rjj-text-strong);letter-spacing:.01em}
+.rjj-roster__b{font:var(--rjj-type-body-sm);font-size:var(--rjj-text-sm);color:var(--rjj-text-muted);text-align:right}
+.rjj-roster__mem{margin-top:var(--rjj-space-7);border-left:1px solid var(--rjj-sand-500);padding-left:var(--rjj-space-5)}
+.rjj-roster__mem p{font:var(--rjj-type-body-sm);font-size:var(--rjj-text-sm);line-height:1.75;color:var(--rjj-text-muted);margin:8px 0 0;max-width:48ch}
+.rjj-co{margin-top:var(--rjj-space-7);display:flex;flex-direction:column}
+.rjj-co__r{padding:var(--rjj-space-5) 0;border-bottom:1px solid var(--rjj-line-hairline);display:grid;grid-template-columns:84px 1fr;gap:var(--rjj-space-5);align-items:start}
+.rjj-co__r:first-child{border-top:1px solid var(--rjj-line-hairline)}
+.rjj-co__ph{width:84px;height:104px;object-fit:cover}
+.rjj-co__n{font:var(--rjj-weight-medium) var(--rjj-text-lg)/1.3 var(--rjj-font-display);color:var(--rjj-text-strong);letter-spacing:.01em}
+.rjj-co__b{font:var(--rjj-type-eyebrow);letter-spacing:var(--rjj-tracking-eyebrow);text-transform:uppercase;color:var(--rjj-sand-700);margin-top:6px}
+.rjj-co__l,.rjj-co__y{font:var(--rjj-type-body-sm);font-size:var(--rjj-text-sm);color:var(--rjj-text-body);margin-top:6px}
+.rjj-co__y{color:var(--rjj-text-muted);font-size:var(--rjj-text-xs)}
+.rjj-co__l.is-clamped{display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.rjj-co__more{margin-top:8px;background:none;border:0;padding:0;cursor:pointer;font:var(--rjj-type-eyebrow);letter-spacing:var(--rjj-tracking-eyebrow);text-transform:uppercase;color:var(--rjj-sand-700);border-bottom:1px solid var(--rjj-sand-500)}
+.rjj-co__more:hover{color:var(--rjj-ink-900);border-color:var(--rjj-ink-900)}
+.rjj-co__play{display:inline-flex;align-items:center;gap:10px;margin-top:var(--rjj-space-4);background:none;border:1px solid var(--rjj-ink-900);color:var(--rjj-ink-900);font:var(--rjj-type-eyebrow);letter-spacing:var(--rjj-tracking-eyebrow);text-transform:uppercase;padding:9px 16px;cursor:pointer;transition:background var(--rjj-duration-base) var(--rjj-ease-standard),color var(--rjj-duration-base) var(--rjj-ease-standard)}
+.rjj-co__play:hover{background:var(--rjj-ink-900);color:var(--rjj-paper-000)}
+.rjj-co__tri{width:0;height:0;border-left:7px solid currentColor;border-top:5px solid transparent;border-bottom:5px solid transparent}
+.rjj-vid{position:fixed;inset:0;z-index:99999;background:rgba(10,10,10,.86);display:flex;align-items:center;justify-content:center;padding:var(--rjj-space-7)}
+.rjj-vid[hidden]{display:none}
+.rjj-vid__box{position:relative;width:min(960px,100%)}
+.rjj-vid__box iframe{width:100%;aspect-ratio:16/9;display:block;border:0;background:#000}
+.rjj-vid__x{position:absolute;top:-44px;right:0;background:none;border:0;color:var(--rjj-paper-000);font:var(--rjj-type-eyebrow);letter-spacing:var(--rjj-tracking-eyebrow);text-transform:uppercase;cursor:pointer}
+.rjj-vid__x:hover{color:var(--rjj-sand-500)}
+@media (max-width:1080px){ .rjj-coachgrid{grid-template-columns:1fr;gap:var(--rjj-space-8)} }
+</style>
+
+  <div class="rjj-wrap rjj-coachgrid">
+    <div>
+      <div class="rjj-eyebrow">Who is on the mat with you</div>
+      <h2 class="rjj-h2" style="margin-top:var(--rjj-space-4)">Meet your coaches</h2>
+      <div class="rjj-rule"></div>
+      <div class="rjj-co">
+
+        <div class="rjj-co__r">
+          <img class="rjj-co__ph" src="{{ASSETS}}/coach-rafael-lang.jpg" alt="Rafael Lang" width="84" height="104">
+          <div>
+            <div class="rjj-co__n">Rafael Lang</div>
+            <div class="rjj-co__b">Founder and head instructor</div>
+            <div class="rjj-co__l is-clamped" data-rjj-bio>30 years of Brazilian Jiu-Jitsu, beginning his journey in 1995. His impressive achievements include 2022 No-Gi Pans Jiu-Jitsu Gold Medal, the 2021 IBJJF Master Worlds Gold Medal, and two 2020 Pan Ams Gi Silvers, including one Silver in the absolute division. Rafael is also a multiple-time Submission Hunter Pro Heavyweight Gi Belt Holder, a Brazilian National Champion, and a seasoned veteran of Fight2Win and Kasai Pro. In addition to competing, Rafael has spent time training the Australian Army and Dallas police force. His extensive background and numerous accolades make him a distinguished leader and mentor in our gym.</div>
+            <button type="button" class="rjj-co__more" data-rjj-more>Read more</button>
+            <div class="rjj-co__y">Teaching since 1995 · head instructor</div>
+            <button type="button" class="rjj-co__play" data-rjj-play="Get7qt2TwMs"><span class="rjj-co__tri"></span>Watch Rafael roll</button>
+          </div>
+        </div>
+
+        <div class="rjj-co__r">
+          <img class="rjj-co__ph" src="{{ASSETS}}/coach-stephen-hall.webp" alt="Stephen Hall" width="84" height="104">
+          <div>
+            <div class="rjj-co__n">Stephen Hall</div>
+            <div class="rjj-co__b">4th Degree Black Belt</div>
+            <button type="button" class="rjj-co__play" data-rjj-play="0LoyNFVrfes"><span class="rjj-co__tri"></span>Watch Stephen roll</button>
+          </div>
+        </div>
+
+        <div class="rjj-co__r">
+          <img class="rjj-co__ph" src="{{ASSETS}}/coach-nick-reding.webp" alt="Nick Reding" width="84" height="104">
+          <div>
+            <div class="rjj-co__n">Nick Reding</div>
+            <div class="rjj-co__b">4th Degree Black Belt</div>
+            <button type="button" class="rjj-co__play" data-rjj-play="ezB-GpTQh_0"><span class="rjj-co__tri"></span>Watch Nick roll</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="rjj-roster">
+      <div class="rjj-roster__eb">The rest of the staff</div>
+      <div class="rjj-roster__l">
+        <div class="rjj-roster__r"><span class="rjj-roster__n">David Binswager</span><span class="rjj-roster__b">3rd Degree Black Belt</span></div>
+        <div class="rjj-roster__r"><span class="rjj-roster__n">Alex More</span><span class="rjj-roster__b">1st Degree Black Belt</span></div>
+        <div class="rjj-roster__r"><span class="rjj-roster__n">Drew Abbey</span><span class="rjj-roster__b">Black Belt</span></div>
+        <div class="rjj-roster__r"><span class="rjj-roster__n">Patrick Grinnan</span><span class="rjj-roster__b">Black Belt</span></div>
+        <div class="rjj-roster__r"><span class="rjj-roster__n">Ramtin Nikzad</span><span class="rjj-roster__b">Black Belt</span></div>
+        <div class="rjj-roster__r"><span class="rjj-roster__n">Anthony Puddu</span><span class="rjj-roster__b">Black Belt</span></div>
+        <div class="rjj-roster__r"><span class="rjj-roster__n">Manuel Suero</span><span class="rjj-roster__b">Black Belt</span></div>
+        <div class="rjj-roster__r"><span class="rjj-roster__n">Sandra Sutherland</span><span class="rjj-roster__b">Black Belt</span></div>
+        <div class="rjj-roster__r"><span class="rjj-roster__n">Ted Gates</span><span class="rjj-roster__b">Brown Belt</span></div>
+        <div class="rjj-roster__r"><span class="rjj-roster__n">Noah Martin</span><span class="rjj-roster__b">Brown Belt</span></div>
+        <div class="rjj-roster__r"><span class="rjj-roster__n">Mike King</span><span class="rjj-roster__b">Boxing Coach, Blue Belt (Jiu Jitsu)</span></div>
+        <div class="rjj-roster__r"><span class="rjj-roster__n">David Bertolino</span><span class="rjj-roster__b">Wrestling Coach, Blue Belt (Jiu Jitsu)</span></div>
+      </div>
+      <div class="rjj-roster__mem">
+        <div class="rjj-roster__n">Octavio Couto</div>
+        <p>In honor and memory of Octavio Couto “Ratinho” whos values and knowledge will never be forgotten.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="rjj-vid" hidden data-rjj-modal>
+    <div class="rjj-vid__box">
+      <button type="button" class="rjj-vid__x" data-rjj-close aria-label="Close video">Close</button>
+      <iframe title="Coach video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; picture-in-picture" allowfullscreen frameborder="0"></iframe>
+    </div>
+  </div>
+
+<script>
+(function(){
+  var s = document.currentScript;
+  var root = s ? s.closest('.rjj-coaches')
+              : document.querySelector('.rjj-coaches:not([data-rjj-init])');
+  if (!root || root.dataset.rjjInit) return;
+  root.dataset.rjjInit = '1';
+
+  /* "Read more" on the long bio */
+  var bio  = root.querySelector('[data-rjj-bio]'),
+      more = root.querySelector('[data-rjj-more]');
+  if (bio && more) more.addEventListener('click', function(){
+    var open = bio.classList.toggle('is-clamped') === false;
+    more.textContent = open ? 'Show less' : 'Read more';
+  });
+
+  /* Video modal */
+  var modal = root.querySelector('[data-rjj-modal]'),
+      frame = modal.querySelector('iframe'),
+      last  = null;
+  function open(id, btn){
+    last = btn;
+    frame.src = 'https://www.youtube.com/embed/' + id + '?autoplay=1&rel=0';
+    modal.hidden = false;
+    document.body.style.overflow = 'hidden';
+    modal.querySelector('[data-rjj-close]').focus();
+  }
+  function close(){
+    modal.hidden = true;
+    frame.src = 'about:blank';            /* stops playback. NOT '' — an empty
+                                             src resolves to the current page
+                                             URL and reloads the whole page
+                                             inside the modal iframe. */
+    document.body.style.overflow = '';
+    if (last) last.focus();
+  }
+  root.querySelectorAll('[data-rjj-play]').forEach(function(b){
+    b.addEventListener('click', function(){ open(b.dataset.rjjPlay, b); });
+  });
+  modal.querySelector('[data-rjj-close]').addEventListener('click', close);
+  modal.addEventListener('click', function(e){ if (e.target === modal) close(); });
+  document.addEventListener('keydown', function(e){
+    if (e.key === 'Escape' && !modal.hidden) close();
+  });
+})();
+</script>
+</div>

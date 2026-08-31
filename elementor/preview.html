@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rio Jiu-Jitsu — Elementor block preview</title>
+<link rel="icon" href="../favicon.ico" sizes="any">
+<!-- PREVIEW ONLY. Elementor/your theme supplies these two rules. -->
+<style>html{scroll-behavior:smooth}body{margin:0;background:#fff}</style>
+</head>
+<body>
+<!-- ═══════════════════════════════════════════════════════════════════
+     RIO JIU-JITSU · MAT PASS — 00 GLOBAL  (paste this ONCE, first)
+     Fonts + design tokens + shared component styles.
+     Everything is scoped to .rjj so it cannot touch your theme.
+     ═══════════════════════════════════════════════════════════════ -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jost:wght@200;300;400;500;600&family=Lato:wght@300;400;700&display=swap">
+
+<style>
+/* ── design tokens ─────────────────────────────────────────────── */
+.rjj{
+  --rjj-ink-900:#0a0a0a; --rjj-ink-700:#2b2b2b; --rjj-ink-500:#444;
+  --rjj-ink-300:#9a9a9a;
+  --rjj-moss-700:#2b3327; --rjj-moss-500:#3e4939;
+  --rjj-sand-700:#8c7f5f; --rjj-sand-500:#aea17e; --rjj-sand-300:#cbc2a8;
+  --rjj-paper-000:#fff; --rjj-paper-100:#f5f3f0; --rjj-paper-200:#e8e5e0;
+
+  --rjj-text-strong:var(--rjj-ink-900);
+  --rjj-text-body:var(--rjj-moss-500);
+  --rjj-text-muted:var(--rjj-ink-500);
+  --rjj-text-subtle:var(--rjj-ink-300);
+  --rjj-text-link:var(--rjj-ink-900);
+  --rjj-text-link-hover:var(--rjj-sand-700);
+  --rjj-line-hairline:var(--rjj-paper-200);
+  --rjj-surface-card:var(--rjj-paper-000);
+  --rjj-action-fill:var(--rjj-ink-900);
+  --rjj-action-fill-hover:var(--rjj-moss-700);
+  --rjj-action-label:var(--rjj-paper-000);
+  --rjj-focus-ring:var(--rjj-sand-500);
+
+  --rjj-font-display:"Jost","Century Gothic",Futura,system-ui,sans-serif;
+  --rjj-font-ui:var(--rjj-font-display);
+  --rjj-font-body:"Lato","Helvetica Neue",Helvetica,sans-serif;
+  --rjj-font-mono:ui-monospace,"SFMono-Regular",Menlo,monospace;
+
+  --rjj-weight-hairline:200; --rjj-weight-light:300;
+  --rjj-weight-regular:400; --rjj-weight-medium:500;
+
+  --rjj-text-h3:24px; --rjj-text-section:19px; --rjj-text-lg:18px;
+  --rjj-text-md:16px; --rjj-text-sm:14px; --rjj-text-xs:12px;
+  --rjj-text-eyebrow:12px;
+
+  --rjj-leading-snug:1.35; --rjj-leading-body:1.85;
+  --rjj-tracking-hero:-.02em; --rjj-tracking-section:.14em;
+  --rjj-tracking-eyebrow:.22em; --rjj-tracking-button:.06em;
+
+  --rjj-type-body:var(--rjj-weight-regular) var(--rjj-text-md)/var(--rjj-leading-body) var(--rjj-font-body);
+  --rjj-type-body-sm:var(--rjj-weight-regular) var(--rjj-text-sm)/var(--rjj-leading-body) var(--rjj-font-body);
+  --rjj-type-eyebrow:var(--rjj-weight-medium) var(--rjj-text-eyebrow)/1.4 var(--rjj-font-ui);
+
+  --rjj-space-2:8px;  --rjj-space-3:12px; --rjj-space-4:16px;
+  --rjj-space-5:24px; --rjj-space-6:32px; --rjj-space-7:48px;
+  --rjj-space-8:64px; --rjj-space-9:96px; --rjj-space-10:128px;
+
+  --rjj-container-max:1140px; --rjj-container-narrow:720px; --rjj-gutter:24px;
+  --rjj-radius-0:0px; --rjj-radius-pill:999px; --rjj-rule-width:1px;
+  --rjj-duration-base:220ms; --rjj-ease-standard:cubic-bezier(.4,0,.2,1);
+  --rjj-transition-base:all var(--rjj-duration-base) var(--rjj-ease-standard);
+}
+
+/* ── scoped reset ──────────────────────────────────────────────────
+   The element resets use :where(), which has ZERO specificity, so every
+   component class below — and any override you add in Elementor — beats
+   them. Written as plain `.rjj p {}` these would out-rank single-class
+   rules (0-1-1 vs 0-1-0) and silently eat their margins and link colours. */
+.rjj,.rjj *,.rjj *::before,.rjj *::after{box-sizing:border-box}
+.rjj{font:var(--rjj-type-body);color:var(--rjj-text-body);text-align:left;-webkit-font-smoothing:antialiased}
+:where(.rjj) :where(p,h1,h2,h3,h4,figure,blockquote){margin:0}
+:where(.rjj) :where(h1,h2,h3){font-family:var(--rjj-font-display);text-wrap:pretty}
+:where(.rjj) :where(img){display:block;max-width:100%}
+:where(.rjj) :where(a){color:var(--rjj-text-link);text-decoration:none;transition:color var(--rjj-duration-base) var(--rjj-ease-standard)}
+:where(.rjj) :where(a):hover{color:var(--rjj-text-link-hover)}
+.rjj :focus-visible{outline:2px solid var(--rjj-focus-ring);outline-offset:3px}
+.rjj ::selection{background:var(--rjj-sand-300);color:var(--rjj-ink-900)}
+
+/* ── layout ────────────────────────────────────────────────────── */
+.rjj-wrap{max-width:var(--rjj-container-max);margin:0 auto;padding:0 var(--rjj-gutter)}
+.rjj-band{padding:var(--rjj-space-10) 0}
+.rjj-band--paper{background:var(--rjj-paper-000)}
+.rjj-band--muted{background:var(--rjj-paper-100)}
+.rjj-band--ink{background:var(--rjj-ink-900)}
+.rjj-rule{width:48px;border-top:1px solid var(--rjj-sand-500);margin:var(--rjj-space-6) 0}
+.rjj-lede{font:var(--rjj-type-body);font-size:var(--rjj-text-lg);max-width:64ch;margin:0}
+.rjj-lede strong{color:var(--rjj-text-strong);font-weight:700}
+.rjj-note{font:var(--rjj-type-body-sm);font-size:var(--rjj-text-sm);color:var(--rjj-text-muted);max-width:74ch;margin:var(--rjj-space-5) 0 0}
+.rjj-mono{font-family:var(--rjj-font-mono);font-size:.92em}
+
+/* ── design-system components (were React, now plain CSS) ──────── */
+.rjj-eyebrow{font:var(--rjj-type-eyebrow);letter-spacing:var(--rjj-tracking-eyebrow);text-transform:uppercase;color:var(--rjj-text-muted)}
+.rjj-eyebrow--inverse{color:rgba(255,255,255,.82)}
+.rjj-h2{font-size:var(--rjj-text-section);font-weight:var(--rjj-weight-medium);letter-spacing:var(--rjj-tracking-section);line-height:var(--rjj-leading-snug);text-transform:uppercase;color:var(--rjj-text-strong)}
+.rjj-hr{border:0;border-top:var(--rjj-rule-width) solid var(--rjj-line-hairline);margin:22px 0;width:auto}
+.rjj-btn{display:inline-flex;align-items:center;justify-content:center;gap:var(--rjj-space-2);font-family:var(--rjj-font-ui);font-weight:var(--rjj-weight-regular);font-size:var(--rjj-text-md);letter-spacing:var(--rjj-tracking-button);border-radius:var(--rjj-radius-pill);border:1px solid transparent;padding:17px 42px;background:var(--rjj-action-fill);color:var(--rjj-action-label);cursor:pointer;text-decoration:none;white-space:nowrap;transition:var(--rjj-transition-base)}
+.rjj-btn:hover{background:var(--rjj-action-fill-hover);color:var(--rjj-action-label)}
+.rjj-btn--block{width:100%}
+.rjj-card{background:var(--rjj-surface-card);color:var(--rjj-text-body);border:1px solid var(--rjj-line-hairline);border-radius:var(--rjj-radius-0);padding:var(--rjj-space-7)}
+.rjj-field{display:block}
+.rjj-field > span:not(.rjj-selwrap){display:block;font:var(--rjj-type-eyebrow);letter-spacing:var(--rjj-tracking-eyebrow);text-transform:uppercase;color:var(--rjj-text-muted);margin-bottom:var(--rjj-space-2)}
+.rjj-field input,.rjj-field select{width:100%;font:var(--rjj-type-body-sm);line-height:1.4;color:var(--rjj-text-strong);background:var(--rjj-paper-000);border:1px solid var(--rjj-line-hairline);border-radius:var(--rjj-radius-0);padding:13px 14px;outline:none;transition:var(--rjj-transition-base)}
+.rjj-field input:focus,.rjj-field select:focus{border-color:var(--rjj-sand-500)}
+.rjj-selwrap{display:block;position:relative}
+.rjj-selwrap select{appearance:none;-webkit-appearance:none;padding-right:38px}
+.rjj-selwrap::after{content:"";position:absolute;right:14px;top:50%;width:8px;height:8px;margin-top:-3px;border-right:1px solid var(--rjj-ink-500);border-bottom:1px solid var(--rjj-ink-500);transform:translateY(-50%) rotate(45deg);pointer-events:none}
+
+@media (max-width:860px){ .rjj-band{padding:var(--rjj-space-9) 0} }
+@media (prefers-reduced-motion:reduce){ .rjj *{transition:none!important;animation:none!important} }
+</style>
+
+
+<!-- RIO · 01 HERO — needs 00-global pasted once, anywhere above. -->
+<div class="rjj rjj-hero">
+<style>
+.rjj-hero{position:relative;min-height:min(880px,96vh);display:flex;flex-direction:column;background:var(--rjj-ink-900);overflow:hidden}
+.rjj-hero__stage{position:absolute;inset:0;background:var(--rjj-ink-900) center/cover no-repeat url("assets/hero-poster.jpg")}
+.rjj-hero__vid{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:auto;height:auto;min-width:100%;min-height:100%;aspect-ratio:16/9;border:0;pointer-events:none}
+.rjj-hero__scrim{position:absolute;inset:0;background:linear-gradient(90deg,rgba(10,10,10,.74) 0%,rgba(10,10,10,.52) 38%,rgba(10,10,10,0) 66%),linear-gradient(180deg,rgba(10,10,10,.62) 0%,rgba(10,10,10,.34) 42%,rgba(10,10,10,.78) 100%)}
+.rjj-head{position:relative;z-index:2;display:flex;align-items:center;justify-content:space-between;gap:var(--rjj-space-6);max-width:var(--rjj-container-max);margin:0 auto;padding:var(--rjj-space-6) var(--rjj-gutter) 0;width:100%}
+.rjj-head__mark{height:44px;width:auto}
+.rjj-head__r{display:flex;align-items:center;gap:var(--rjj-space-6)}
+.rjj-head__loc{font:var(--rjj-type-eyebrow);letter-spacing:var(--rjj-tracking-eyebrow);text-transform:uppercase;color:rgba(255,255,255,.72)}
+.rjj-head__tel{font:var(--rjj-weight-medium) var(--rjj-text-md)/1 var(--rjj-font-display);color:var(--rjj-paper-000);letter-spacing:.02em}
+.rjj-head__tel:hover{color:var(--rjj-sand-500)}
+.rjj-hero__in{position:relative;z-index:2;flex:1;display:grid;grid-template-columns:1fr 384px;gap:var(--rjj-space-9);align-items:center;max-width:var(--rjj-container-max);margin:0 auto;width:100%;padding:var(--rjj-space-9) var(--rjj-gutter)}
+.rjj-hero__h1{font:var(--rjj-weight-hairline) clamp(40px,5.2vw,80px)/.98 var(--rjj-font-display);letter-spacing:var(--rjj-tracking-hero);color:var(--rjj-paper-000);margin:var(--rjj-space-5) 0 0}
+.rjj-hero__sub{font:var(--rjj-type-body);font-size:var(--rjj-text-lg);line-height:1.7;color:rgba(255,255,255,.82);max-width:46ch;margin:var(--rjj-space-6) 0 0}
+.rjj-offer{background:var(--rjj-paper-000);padding:var(--rjj-space-7);border-radius:var(--rjj-radius-0)}
+.rjj-offer__eb{font:var(--rjj-type-eyebrow);letter-spacing:var(--rjj-tracking-eyebrow);text-transform:uppercase;color:var(--rjj-sand-700)}
+.rjj-offer__price{display:flex;align-items:baseline;gap:14px;margin-top:var(--rjj-space-4)}
+.rjj-offer__num{font:var(--rjj-weight-light) 76px/1 var(--rjj-font-display);color:var(--rjj-text-strong);letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+.rjj-offer__unit{font:var(--rjj-weight-medium) var(--rjj-text-md)/1.2 var(--rjj-font-display);letter-spacing:.12em;text-transform:uppercase;color:var(--rjj-text-muted)}
+.rjj-offer__list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
+.rjj-offer__list li{font:var(--rjj-type-body-sm);font-size:var(--rjj-text-sm);color:var(--rjj-text-body);padding-left:24px;position:relative}
+.rjj-offer__list li::before{content:"";position:absolute;left:0;top:.72em;width:14px;border-top:1px solid var(--rjj-sand-500)}
+.rjj-offer .rjj-btn{margin-top:28px}
+.rjj-offer__call{display:block;text-align:center;margin-top:var(--rjj-space-4);font:var(--rjj-type-body-sm);font-size:var(--rjj-text-sm);color:var(--rjj-text-muted)}
+.rjj-proof{position:relative;z-index:2;border-top:1px solid rgba(255,255,255,.24);background:rgba(10,10,10,.42)}
+.rjj-proof__in{display:flex;flex-wrap:wrap;gap:var(--rjj-space-4) var(--rjj-space-8);padding:var(--rjj-space-5) var(--rjj-gutter)}
+.rjj-proof__i{font:var(--rjj-type-body-sm);font-size:var(--rjj-text-sm);color:rgba(255,255,255,.7)}
+.rjj-proof__i b{color:var(--rjj-paper-000);font-weight:700}
+@media (max-width:1080px){ .rjj-hero__in{grid-template-columns:1fr 340px} }
+@media (max-width:860px){ .rjj-hero__in{grid-template-columns:1fr} .rjj-head__loc{display:none} }
+@media (max-width:640px){
+  .rjj-hero{min-height:0}
+  .rjj-hero__in{padding-top:var(--rjj-space-7)}
+  .rjj-hero__h1{font-size:clamp(34px,10vw,46px)}
+  .rjj-offer{padding:var(--rjj-space-6)}
+}
+</style>
+
+  <div class="rjj-hero__stage">
+    <iframe class="rjj-hero__vid"
+            src="https://player.vimeo.com/video/1221819363?background=1&amp;autoplay=1&amp;loop=1&amp;muted=1&amp;autopause=0&amp;playsinline=1"
+            title="Rio Jiu-Jitsu Lifestyle · The Mat Pass"
+            allow="autoplay; fullscreen; picture-in-picture"
+            referrerpolicy="strict-origin-when-cross-origin"
+            frameborder="0" tabindex="-1" aria-hidden="true"></iframe>
+  </div>
+  <div class="rjj-hero__scrim"></div>
+
+  <header class="rjj-head">
+    <img class="rjj-head__mark" src="assets/logo-mark-white.png" alt="Rio Jiu-Jitsu" width="44" height="44">
+    <div class="rjj-head__r">
+      <span class="rjj-head__loc">6465 E. Mockingbird Lane. Suite 350. Dallas, Tx</span>
+      <a class="rjj-head__tel" href="tel:945269010">945-269-010</a>
+    </div>
+  </header>
+
+  <div class="rjj-hero__in">
+    <div>
+      <div class="rjj-eyebrow rjj-eyebrow--inverse">Rio Jiu-Jitsu Lifestyle · The Mat Pass</div>
+      <h1 class="rjj-hero__h1">Two classes.<br>Twenty‑five dollars.<br>No experience required.</h1>
+      <p class="rjj-hero__sub">Rio Jiu-Jitsu in Lake Highlands. Walk in knowing nothing, leave knowing something. We’ll lend you the gi.</p>
+    </div>
+
+    <div class="rjj-offer">
+      <div class="rjj-offer__eb">New client offer</div>
+      <div class="rjj-offer__price"><span class="rjj-offer__num">$25</span><span class="rjj-offer__unit">2 classes</span></div>
+      <hr class="rjj-hr">
+      <ul class="rjj-offer__list">
+        <li>Loaner gi included</li>
+        <li>No contract, no sales pitch</li>
+        <li>Book any adult class on the schedule</li>
+      </ul>
+      <a class="rjj-btn rjj-btn--block" href="#rjj-book">Claim my mat pass</a>
+      <a class="rjj-offer__call" href="tel:945269010">or call 945-269-010</a>
+    </div>
+  </div>
+
+  <div class="rjj-proof">
+    <div class="rjj-wrap rjj-proof__in">
+      <span class="rjj-proof__i"><b>4.9</b> average · 180+ Google reviews</span>
+      <span class="rjj-proof__i"><b>13k</b> on Instagram</span>
+      <span class="rjj-proof__i"><b>Open 7 days</b> · classes morning and evening</span>
+    </div>
+  </div>
+</div>
+
+
+<!-- RIO · 02 OBJECTIONS -->
+<div class="rjj rjj-band rjj-band--paper">
+<style>
+.rjj-obj{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--rjj-line-hairline);border-top:1px solid var(--rjj-line-hairline);margin-top:var(--rjj-space-9)}
+.rjj-obj__c{background:var(--rjj-paper-000);padding:30px}
+.rjj-obj__n{font:var(--rjj-weight-light) 20px/1 var(--rjj-font-display);color:var(--rjj-sand-700);font-variant-numeric:tabular-nums}
+.rjj-obj__q{font:var(--rjj-weight-medium) var(--rjj-text-lg)/1.35 var(--rjj-font-display);color:var(--rjj-text-strong);margin:var(--rjj-space-5) 0 var(--rjj-space-4);letter-spacing:.01em}
+.rjj-obj__a{font:var(--rjj-type-body-sm);font-size:var(--rjj-text-sm);line-height:1.75;margin:0}
+@media (max-width:860px){ .rjj-obj{grid-template-columns:repeat(2,1fr)} .rjj-obj__c{padding:24px} }
+@media (max-width:640px){ .rjj-obj{grid-template-columns:1fr} .rjj-obj__c{padding:24px 0} }
+</style>
+  <div class="rjj-wrap">
+    <h2 class="rjj-h2">You don’t need to be ready</h2>
+    <div class="rjj-rule"></div>
+    <p class="rjj-lede">Three things stop adults from booking a first class. None of them are about Jiu-Jitsu.</p>
+    <div class="rjj-obj">
+      <div class="rjj-obj__c">
+        <div class="rjj-obj__n">01</div>
+        <h3 class="rjj-obj__q">“I’m not in shape for this.”</h3>
+        <p class="rjj-obj__a">Neither was anyone here on day one. Conditioning is what Jiu-Jitsu gives you, not what it asks for.</p>
+      </div>
+      <div class="rjj-obj__c">
+        <div class="rjj-obj__n">02</div>
+        <h3 class="rjj-obj__q">“I’ll get hurt.”</h3>
+        <p class="rjj-obj__a">Beginners drill with coaches and upper belts who have been doing this for a decade. Nobody is trying to win against you.</p>
+      </div>
+      <div class="rjj-obj__c">
+        <div class="rjj-obj__n">03</div>
+        <h3 class="rjj-obj__q">“I’ve trained before.”</h3>
+        <p class="rjj-obj__a">Then come to an open mat instead. Tell us your belt when you book and we’ll put you in the right room.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- RIO · 03 BENEFITS -->
+<div class="rjj rjj-benefits">
+<style>
+.rjj-benefits{background:var(--rjj-paper-000);padding:0 0 var(--rjj-space-9)}
+.rjj-benefits__in{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--rjj-space-6);border-top:1px solid var(--rjj-line-hairline);padding-top:var(--rjj-space-8)}
+.rjj-ben{display:flex;flex-direction:column;align-items:center;gap:var(--rjj-space-4);text-align:center}
+.rjj-ben__i{width:64px;height:64px;object-fit:contain;mix-blend-mode:multiply}
+.rjj-ben__l{font:var(--rjj-weight-medium) var(--rjj-text-sm)/1.4 var(--rjj-font-display);letter-spacing:.12em;text-transform:uppercase;color:var(--rjj-text-strong)}
+@media (max-width:860px){ .rjj-benefits__in{grid-template-columns:repeat(2,1fr)} }
+</style>
+  <div class="rjj-wrap rjj-benefits__in">
+    <div class="rjj-ben"><img class="rjj-ben__i" src="assets/improved-health.png" alt="" width="64" height="64"><span class="rjj-ben__l">Improved health</span></div>
+    <div class="rjj-ben"><img class="rjj-ben__i" src="assets/self-control.png" alt="" width="64" height="64"><span class="rjj-ben__l">Self-control</span></div>
+    <div class="rjj-ben"><img class="rjj-ben__i" src="assets/confidence-boost.png" alt="" width="64" height="64"><span class="rjj-ben__l">Confidence boost</span></div>
+    <div class="rjj-ben"><img class="rjj-ben__i" src="assets/self-defense.png" alt="" width="64" height="64"><span class="rjj-ben__l">Self-defense skills</span></div>
+  </div>
+</div>
+
+
+<!-- RIO · 04 FIRST CLASS -->
+<div class="rjj rjj-band rjj-band--muted">
+<style>
+.rjj-fc{margin-top:var(--rjj-space-8);border-top:1px solid var(--rjj-paper-200)}
+.rjj-fc__r{display:grid;grid-template-columns:200px 1fr;gap:var(--rjj-space-7);padding:var(--rjj-space-6) 0;border-bottom:1px solid var(--rjj-paper-200)}
+.rjj-fc__t{font:var(--rjj-type-eyebrow);letter-spacing:var(--rjj-tracking-eyebrow);text-transform:uppercase;color:var(--rjj-sand-700);padding-top:5px}
+.rjj-fc__h{font:var(--rjj-weight-medium) var(--rjj-text-h3)/1.3 var(--rjj-font-display);color:var(--rjj-text-strong);margin:0 0 var(--rjj-space-3);letter-spacing:.01em}
+.rjj-fc__p{font:var(--rjj-type-body-sm);font-size:var(--rjj-text-sm);line-height:1.75;margin:0;max-width:70ch}
+@media (max-width:860px){ .rjj-fc__r{grid-template-columns:1fr;gap:var(--rjj-space-3)} }
+</style>
+  <div class="rjj-wrap">
+    <div class="rjj-eyebrow">What you are actually signing up for</div>
+    <h2 class="rjj-h2" style="margin-top:var(--rjj-space-4)">Your first class, minute by minute</h2>
+    <div class="rjj-rule"></div>
+    <div class="rjj-fc">
+      <div class="rjj-fc__r">
+        <div class="rjj-fc__t">Minutes 0–5</div>
+        <div><h3 class="rjj-fc__h">You arrive and someone knows your name</h3>
+        <p class="rjj-fc__p">Shoes off at the mat edge. A coach walks you through where to change, hands you a loaner gi and shows you how to tie the belt.</p></div>
+      </div>
+      <div class="rjj-fc__r">
+        <div class="rjj-fc__t">Minutes 5–20</div>
+        <div><h3 class="rjj-fc__h">Warm-up, at your pace</h3>
+        <p class="rjj-fc__p">Movement drills, not a fitness test. Stop when you need to. Water is by the door and nobody is counting.</p></div>
+      </div>
+      <div class="rjj-fc__r">
+        <div class="rjj-fc__t">Minutes 20–45</div>
+        <div><h3 class="rjj-fc__h">Two techniques, slowly, with a partner</h3>
+        <p class="rjj-fc__p">One escape and one control position. You will practise both with an upper belt who has taught them a hundred times.</p></div>
+      </div>
+      <div class="rjj-fc__r">
+        <div class="rjj-fc__t">Minutes 45–60</div>
+        <div><h3 class="rjj-fc__h">Light practice, then a handshake</h3>
+        <p class="rjj-fc__p">Positional rounds at whatever intensity you choose. Beginners are never thrown into open rolling on day one.</p></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- RIO · 05 TESTIMONIALS -->
+<div class="rjj rjj-band rjj-band--paper">
+<style>
+.rjj-vo{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--rjj-space-6);margin-top:var(--rjj-space-8)}
+.rjj-vo__c{margin:0;border-top:1px solid var(--rjj-ink-900);padding-top:var(--rjj-space-5)}
+.rjj-vo__q{font:var(--rjj-weight-light) var(--rjj-text-lg)/1.55 var(--rjj-font-display);color:var(--rjj-moss-500);margin:0;letter-spacing:0}
+.rjj-vo__n{display:block;margin-top:var(--rjj-space-5);font:var(--rjj-weight-medium) var(--rjj-text-sm)/1.4 var(--rjj-font-display);letter-spacing:.1em;text-transform:uppercase;color:var(--rjj-text-strong)}
+.rjj-vo__m{display:block;margin-top:4px;font:var(--rjj-type-body-sm);font-size:var(--rjj-text-xs);letter-spacing:0;text-transform:none;color:var(--rjj-text-muted)}
+@media (max-width:860px){ .rjj-vo{grid-template-columns:repeat(2,1fr)} }
+@media (max-width:640px){ .rjj-vo{grid-template-columns:1fr} }
+</style>
+  <div class="rjj-wrap">
+    <h2 class="rjj-h2">Adults who started where you are</h2>
+    <div class="rjj-rule"></div>
+    <div class="rjj-vo">
+      <figure class="rjj-vo__c">
+        <blockquote class="rjj-vo__q">I put it off for two years because I thought I had to get fit first. Six months in, the training is the fitness. I stopped needing the excuse.</blockquote>
+        <figcaption class="rjj-vo__n">Marcus D.<span class="rjj-vo__m">Blue belt · training 14 months</span></figcaption>
+      </figure>
+      <figure class="rjj-vo__c">
+        <blockquote class="rjj-vo__q">Nobody tried to smash me on my first night. The upper belts slowed everything down until I understood it. That is why I came back.</blockquote>
+        <figcaption class="rjj-vo__n">Kevin A.<span class="rjj-vo__m">White belt · training 5 months</span></figcaption>
+      </figure>
+      <figure class="rjj-vo__c">
+        <blockquote class="rjj-vo__q">I came in with four years of experience from another city and they put me straight into the right room. No ego about where I learned it.</blockquote>
+        <figcaption class="rjj-vo__n">Tobias R.<span class="rjj-vo__m">Purple belt · training 6 years</span></figcaption>
+      </figure>
+    </div>
+  </div>
+</div>
+
+
+<!-- RIO · 06 COACHES — includes a self-contained video modal (no libraries). -->
+<div class="rjj rjj-band rjj-band--paper rjj-coaches" style="padding-top:0">
+<style>
+.rjj-coachgrid{display:grid;grid-template-columns:1fr 1fr;gap:var(--rjj-space-10);align-items:center;border-top:1px solid var(--rjj-line-hairline);padding-top:var(--rjj-space-10)}
+.rjj-roster{min-width:0;align-self:start;border-top:1px solid var(--rjj-ink-900);padding-top:var(--rjj-space-6)}
+.rjj-roster__eb{font:var(--rjj-type-eyebrow);letter-spacing:var(--rjj-tracking-eyebrow);text-transform:uppercase;color:var(--rjj-sand-700)}
+.rjj-roster__l{margin-top:var(--rjj-space-6);display:flex;flex-direction:column}
+.rjj-roster__r{display:flex;justify-content:space-between;align-items:baseline;gap:var(--rjj-space-5);padding:14px 0;border-bottom:1px solid var(--rjj-line-hairline)}
+.rjj-roster__n{font:var(--rjj-weight-medium) var(--rjj-text-md)/1.3 var(--rjj-font-display);color:var(--rjj-text-strong);letter-spacing:.01em}
+.rjj-roster__b{font:var(--rjj-type-body-sm);font-size:var(--rjj-text-sm);color:var(--rjj-text-muted);text-align:right}
+.rjj-roster__mem{margin-top:var(--rjj-space-7);border-left:1px solid var(--rjj-sand-500);padding-left:var(--rjj-space-5)}
+.rjj-roster__mem p{font:var(--rjj-type-body-sm);font-size:var(--rjj-text-sm);line-height:1.75;color:var(--rjj-text-muted);margin:8px 0 0;max-width:48ch}
+.rjj-co{margin-top:var(--rjj-space-7);display:flex;flex-direction:column}
+.rjj-co__r{padding:var(--rjj-space-5) 0;border-bottom:1px solid var(--rjj-line-hairline);display:grid;grid-template-columns:84px 1fr;gap:var(--rjj-space-5);align-items:start}
+.rjj-co__r:first-child{border-top:1px solid var(--rjj-line-hairline)}
+.rjj-co__ph{width:84px;height:104px;object-fit:cover}
+.rjj-co__n{font:var(--rjj-weight-medium) var(--rjj-text-lg)/1.3 var(--rjj-font-display);color:var(--rjj-text-strong);letter-spacing:.01em}
+.rjj-co__b{font:var(--rjj-type-eyebrow);letter-spacing:var(--rjj-tracking-eyebrow);text-transform:uppercase;color:var(--rjj-sand-700);margin-top:6px}
+.rjj-co__l,.rjj-co__y{font:var(--rjj-type-body-sm);font-size:var(--rjj-text-sm);color:var(--rjj-text-body);margin-top:6px}
+.rjj-co__y{color:var(--rjj-text-muted);font-size:var(--rjj-text-xs)}
+.rjj-co__l.is-clamped{display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.rjj-co__more{margin-top:8px;background:none;border:0;padding:0;cursor:pointer;font:var(--rjj-type-eyebrow);letter-spacing:var(--rjj-tracking-eyebrow);text-transform:uppercase;color:var(--rjj-sand-700);border-bottom:1px solid var(--rjj-sand-500)}
+.rjj-co__more:hover{color:var(--rjj-ink-900);border-color:var(--rjj-ink-900)}
+.rjj-co__play{display:inline-flex;align-items:center;gap:10px;margin-top:var(--rjj-space-4);background:none;border:1px solid var(--rjj-ink-900);color:var(--rjj-ink-900);font:var(--rjj-type-eyebrow);letter-spacing:var(--rjj-tracking-eyebrow);text-transform:uppercase;padding:9px 16px;cursor:pointer;transition:background var(--rjj-duration-base) var(--rjj-ease-standard),color var(--rjj-duration-base) var(--rjj-ease-standard)}
+.rjj-co__play:hover{background:var(--rjj-ink-900);color:var(--rjj-paper-000)}
+.rjj-co__tri{width:0;height:0;border-left:7px solid currentColor;border-top:5px solid transparent;border-bottom:5px solid transparent}
+.rjj-vid{position:fixed;inset:0;z-index:99999;background:rgba(10,10,10,.86);display:flex;align-items:center;justify-content:center;padding:var(--rjj-space-7)}
+.rjj-vid[hidden]{display:none}
+.rjj-vid__box{position:relative;width:min(960px,100%)}
+.rjj-vid__box iframe{width:100%;aspect-ratio:16/9;display:block;border:0;background:#000}
+.rjj-vid__x{position:absolute;top:-44px;right:0;background:none;border:0;color:var(--rjj-paper-000);font:var(--rjj-type-eyebrow);letter-spacing:var(--rjj-tracking-eyebrow);text-transform:uppercase;cursor:pointer}
+.rjj-vid__x:hover{color:var(--rjj-sand-500)}
+@media (max-width:1080px){ .rjj-coachgrid{grid-template-columns:1fr;gap:var(--rjj-space-8)} }
+</style>
+
+  <div class="rjj-wrap rjj-coachgrid">
+    <div>
+      <div class="rjj-eyebrow">Who is on the mat with you</div>
+      <h2 class="rjj-h2" style="margin-top:var(--rjj-space-4)">Meet your coaches</h2>
+      <div class="rjj-rule"></div>
+      <div class="rjj-co">
+
+        <div class="rjj-co__r">
+          <img class="rjj-co__ph" src="assets/coach-rafael-lang.jpg" alt="Rafael Lang" width="84" height="104">
+          <div>
+            <div class="rjj-co__n">Rafael Lang</div>
+            <div class="rjj-co__b">Founder and head instructor</div>
+            <div class="rjj-co__l is-clamped" data-rjj-bio>30 years of Brazilian Jiu-Jitsu, beginning his journey in 1995. His impressive achievements include 2022 No-Gi Pans Jiu-Jitsu Gold Medal, the 2021 IBJJF Master Worlds Gold Medal, and two 2020 Pan Ams Gi Silvers, including one Silver in the absolute division. Rafael is also a multiple-time Submission Hunter Pro Heavyweight Gi Belt Holder, a Brazilian National Champion, and a seasoned veteran of Fight2Win and Kasai Pro. In addition to competing, Rafael has spent time training the Australian Army and Dallas police force. His extensive background and numerous accolades make him a distinguished leader and mentor in our gym.</div>
+            <button type="button" class="rjj-co__more" data-rjj-more>Read more</button>
+            <div class="rjj-co__y">Teaching since 1995 · head instructor</div>
+            <button type="button" class="rjj-co__play" data-rjj-play="Get7qt2TwMs"><span class="rjj-co__tri"></span>Watch Rafael roll</button>
+          </div>
+        </div>
+
+        <div class="rjj-co__r">
+          <img class="rjj-co__ph" src="assets/coach-stephen-hall.webp" alt="Stephen Hall" width="84" height="104">
+          <div>
+            <div class="rjj-co__n">Stephen Hall</div>
+            <div class="rjj-co__b">4th Degree Black Belt</div>
+            <button type="button" class="rjj-co__play" data-rjj-play="0LoyNFVrfes"><span class="rjj-co__tri"></span>Watch Stephen roll</button>
+          </div>
+        </div>
+
+        <div class="rjj-co__r">
+          <img class="rjj-co__ph" src="assets/coach-nick-reding.webp" alt="Nick Reding" width="84" height="104">
+          <div>
+            <div class="rjj-co__n">Nick Reding</div>
+            <div class="rjj-co__b">4th Degree Black Belt</div>
+            <button type="button" class="rjj-co__play" data-rjj-play="ezB-GpTQh_0"><span class="rjj-co__tri"></span>Watch Nick roll</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="rjj-roster">
+      <div class="rjj-roster__eb">The rest of the staff</div>
+      <div class="rjj-roster__l">
+        <div class="rjj-roster__r"><span class="rjj-roster__n">David Binswager</span><span class="rjj-roster__b">3rd Degree Black Belt</span></div>
+        <div class="rjj-roster__r"><span class="rjj-roster__n">Alex More</span><span class="rjj-roster__b">1st Degree Black Belt</span></div>
+        <div class="rjj-roster__r"><span class="rjj-roster__n">Drew Abbey</span><span class="rjj-roster__b">Black Belt</span></div>
+        <div class="rjj-roster__r"><span class="rjj-roster__n">Patrick Grinnan</span><span class="rjj-roster__b">Black Belt</span></div>
+        <div class="rjj-roster__r"><span class="rjj-roster__n">Ramtin Nikzad</span><span class="rjj-roster__b">Black Belt</span></div>
+        <div class="rjj-roster__r"><span class="rjj-roster__n">Anthony Puddu</span><span class="rjj-roster__b">Black Belt</span></div>
+        <div class="rjj-roster__r"><span class="rjj-roster__n">Manuel Suero</span><span class="rjj-roster__b">Black Belt</span></div>
+        <div class="rjj-roster__r"><span class="rjj-roster__n">Sandra Sutherland</span><span class="rjj-roster__b">Black Belt</span></div>
+        <div class="rjj-roster__r"><span class="rjj-roster__n">Ted Gates</span><span class="rjj-roster__b">Brown Belt</span></div>
+        <div class="rjj-roster__r"><span class="rjj-roster__n">Noah Martin</span><span class="rjj-roster__b">Brown Belt</span></div>
+        <div class="rjj-roster__r"><span class="rjj-roster__n">Mike King</span><span class="rjj-roster__b">Boxing Coach, Blue Belt (Jiu Jitsu)</span></div>
+        <div class="rjj-roster__r"><span class="rjj-roster__n">David Bertolino</span><span class="rjj-roster__b">Wrestling Coach, Blue Belt (Jiu Jitsu)</span></div>
+      </div>
+      <div class="rjj-roster__mem">
+        <div class="rjj-roster__n">Octavio Couto</div>
+        <p>In honor and memory of Octavio Couto “Ratinho” whos values and knowledge will never be forgotten.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="rjj-vid" hidden data-rjj-modal>
+    <div class="rjj-vid__box">
+      <button type="button" class="rjj-vid__x" data-rjj-close aria-label="Close video">Close</button>
+      <iframe title="Coach video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; picture-in-picture" allowfullscreen frameborder="0"></iframe>
+    </div>
+  </div>
+
+<script>
+(function(){
+  var s = document.currentScript;
+  var root = s ? s.closest('.rjj-coaches')
+              : document.querySelector('.rjj-coaches:not([data-rjj-init])');
+  if (!root || root.dataset.rjjInit) return;
+  root.dataset.rjjInit = '1';
+
+  /* "Read more" on the long bio */
+  var bio  = root.querySelector('[data-rjj-bio]'),
+      more = root.querySelector('[data-rjj-more]');
+  if (bio && more) more.addEventListener('click', function(){
+    var open = bio.classList.toggle('is-clamped') === false;
+    more.textContent = open ? 'Show less' : 'Read more';
+  });
+
+  /* Video modal */
+  var modal = root.querySelector('[data-rjj-modal]'),
+      frame = modal.querySelector('iframe'),
+      last  = null;
+  function open(id, btn){
+    last = btn;
+    frame.src = 'https://www.youtube.com/embed/' + id + '?autoplay=1&rel=0';
+    modal.hidden = false;
+    document.body.style.overflow = 'hidden';
+    modal.querySelector('[data-rjj-close]').focus();
+  }
+  function close(){
+    modal.hidden = true;
+    frame.src = 'about:blank';            /* stops playback. NOT '' — an empty
+                                             src resolves to the current page
+                                             URL and reloads the whole page
+                                             inside the modal iframe. */
+    document.body.style.overflow = '';
+    if (last) last.focus();
+  }
+  root.querySelectorAll('[data-rjj-play]').forEach(function(b){
+    b.addEventListener('click', function(){ open(b.dataset.rjjPlay, b); });
+  });
+  modal.querySelector('[data-rjj-close]').addEventListener('click', close);
+  modal.addEventListener('click', function(e){ if (e.target === modal) close(); });
+  document.addEventListener('keydown', function(e){
+    if (e.key === 'Escape' && !modal.hidden) close();
+  });
+})();
+</script>
+</div>
+
+
+<!-- RIO · 07 SCHEDULE -->
+<div class="rjj rjj-band rjj-band--muted">
+<style>
+.rjj-scwrap{overflow-x:auto;margin-top:var(--rjj-space-8);-webkit-overflow-scrolling:touch}
+.rjj-sc{width:100%;border-collapse:collapse}
+.rjj-sc td{font:var(--rjj-type-body-sm);font-size:var(--rjj-text-sm);padding:var(--rjj-space-4) var(--rjj-space-5) var(--rjj-space-4) 0;border-bottom:1px solid var(--rjj-paper-200);color:var(--rjj-text-body);white-space:nowrap}
+.rjj-sc td.is-day{font:var(--rjj-weight-medium) var(--rjj-text-sm)/1.4 var(--rjj-font-display);letter-spacing:.1em;text-transform:uppercase;color:var(--rjj-text-strong);width:150px}
+.rjj-sc td.is-off{color:var(--rjj-text-subtle)}
+</style>
+  <div class="rjj-wrap">
+    <h2 class="rjj-h2">Adult schedule</h2>
+    <div class="rjj-rule"></div>
+    <p class="rjj-lede">Only the adult classes are listed. Your mat pass is good for any two of them, and <strong>Fundamentals</strong> is the right place to use the first one.</p>
+    <div class="rjj-scwrap">
+      <table class="rjj-sc">
+        <tbody>
+          <tr><td class="is-day">Monday</td><td>6:00am Fundamentals</td><td>12:00pm No-Gi</td><td>6:30pm Fundamentals</td><td>7:45pm Open mat</td></tr>
+          <tr><td class="is-day">Tuesday</td><td>6:00am No-Gi</td><td class="is-off">—</td><td>6:30pm Advanced</td><td>7:45pm Sparring</td></tr>
+          <tr><td class="is-day">Wednesday</td><td>6:00am Fundamentals</td><td>12:00pm Fundamentals</td><td>6:30pm Fundamentals</td><td>7:45pm Open mat</td></tr>
+          <tr><td class="is-day">Thursday</td><td>6:00am No-Gi</td><td class="is-off">—</td><td>6:30pm Advanced</td><td>7:45pm Sparring</td></tr>
+          <tr><td class="is-day">Friday</td><td>6:00am Fundamentals</td><td>12:00pm No-Gi</td><td>6:30pm Fundamentals</td><td class="is-off">—</td></tr>
+          <tr><td class="is-day">Saturday</td><td>9:00am Fundamentals</td><td>10:30am Open mat</td><td class="is-off">—</td><td class="is-off">—</td></tr>
+          <tr><td class="is-day">Sunday</td><td>10:00am Open mat</td><td class="is-off">—</td><td class="is-off">—</td><td class="is-off">—</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="rjj-note">Doors open 30 minutes before every class. Arrive 15 minutes early on your first visit so a coach can get you set up.</p>
+  </div>
+</div>
+
+
+<!-- RIO · 08 FAQ — self-contained single-open accordion (no libraries). -->
+<div class="rjj rjj-band rjj-band--paper rjj-faqsec">
+<style>
+.rjj-faqwrap{max-width:var(--rjj-container-narrow)}
+.rjj-faq{margin-top:var(--rjj-space-7);border-top:1px solid var(--rjj-line-hairline)}
+.rjj-faq__r{border-bottom:1px solid var(--rjj-line-hairline)}
+.rjj-faq__q{width:100%;display:flex;align-items:center;justify-content:space-between;gap:var(--rjj-space-5);background:none;border:0;padding:var(--rjj-space-5) 0;cursor:pointer;text-align:left;font:var(--rjj-weight-medium) var(--rjj-text-lg)/1.4 var(--rjj-font-display);color:var(--rjj-text-strong);letter-spacing:.01em;transition:var(--rjj-transition-base)}
+.rjj-faq__q:hover{color:var(--rjj-sand-700)}
+.rjj-faq__s{font:var(--rjj-weight-light) 22px/1 var(--rjj-font-display);color:var(--rjj-sand-700)}
+.rjj-faq__a{font:var(--rjj-type-body-sm);font-size:var(--rjj-text-sm);line-height:1.8;margin:0 0 var(--rjj-space-6);max-width:70ch}
+.rjj-faq__a[hidden]{display:none}
+</style>
+  <div class="rjj-wrap rjj-faqwrap">
+    <h2 class="rjj-h2">Questions adults actually ask</h2>
+    <div class="rjj-rule"></div>
+    <div class="rjj-faq" data-rjj-faq>
+      <div class="rjj-faq__r">
+        <button type="button" class="rjj-faq__q" aria-expanded="true"><span>Do I need my own gi?</span><span class="rjj-faq__s" aria-hidden="true">–</span></button>
+        <p class="rjj-faq__a">No. We lend you a clean gi for both classes on your mat pass. If you decide to keep training, we will point you at the right one to buy rather than sell you ours.</p>
+      </div>
+      <div class="rjj-faq__r">
+        <button type="button" class="rjj-faq__q" aria-expanded="false"><span>What if I am not fit enough?</span><span class="rjj-faq__s" aria-hidden="true">+</span></button>
+        <p class="rjj-faq__a" hidden>There is no fitness requirement and no test. You set your own pace in the warm-up and in practice rounds, and the coach will tell you when to sit one out.</p>
+      </div>
+      <div class="rjj-faq__r">
+        <button type="button" class="rjj-faq__q" aria-expanded="false"><span>Will I get injured?</span><span class="rjj-faq__s" aria-hidden="true">+</span></button>
+        <p class="rjj-faq__a" hidden>Jiu-Jitsu has no striking. Beginners drill with coaches and upper belts, at slow speed, with taps respected immediately. Bruises happen; injuries are rare and we take them seriously.</p>
+      </div>
+      <div class="rjj-faq__r">
+        <button type="button" class="rjj-faq__q" aria-expanded="false"><span>Can I use both classes in one week?</span><span class="rjj-faq__s" aria-hidden="true">+</span></button>
+        <p class="rjj-faq__a" hidden>Yes, or spread them over a month. Book the first one online and we will schedule the second with you after class.</p>
+      </div>
+      <div class="rjj-faq__r">
+        <button type="button" class="rjj-faq__q" aria-expanded="false"><span>What happens after the two classes?</span><span class="rjj-faq__s" aria-hidden="true">+</span></button>
+        <p class="rjj-faq__a" hidden>We talk, once. Memberships run month to month with no contract, and if it is not for you, that is a completely acceptable answer.</p>
+      </div>
+      <div class="rjj-faq__r">
+        <button type="button" class="rjj-faq__q" aria-expanded="false"><span>Is there parking?</span><span class="rjj-faq__s" aria-hidden="true">+</span></button>
+        <p class="rjj-faq__a" hidden>Free surface parking at the Suite 350 entrance on E. Mockingbird Lane. The mat is on the ground floor.</p>
+      </div>
+    </div>
+  </div>
+
+<script>
+(function(){
+  var s = document.currentScript;
+  var root = s ? s.closest('.rjj-faqsec')
+              : document.querySelector('.rjj-faqsec:not([data-rjj-init])');
+  if (!root || root.dataset.rjjInit) return;
+  root.dataset.rjjInit = '1';
+
+  var rows = [].slice.call(root.querySelectorAll('.rjj-faq__r'));
+  function set(row, open){
+    row.querySelector('.rjj-faq__q').setAttribute('aria-expanded', open ? 'true' : 'false');
+    row.querySelector('.rjj-faq__s').textContent = open ? '–' : '+';
+    row.querySelector('.rjj-faq__a').hidden = !open;
+  }
+  rows.forEach(function(row){
+    row.querySelector('.rjj-faq__q').addEventListener('click', function(){
+      var wasOpen = row.querySelector('.rjj-faq__q').getAttribute('aria-expanded') === 'true';
+      rows.forEach(function(r){ set(r, false); });   /* single-open, like the design */
+      set(row, !wasOpen);
+    });
+  });
+})();
+</script>
+</div>
+
+
+<!-- RIO · 09 BOOK — map loads Leaflet from CDN, guarded so it only loads once.
+     The form is the design's placeholder: swap in Elementor Forms or the
+     real Wodify embed where marked. -->
+<div class="rjj rjj-band rjj-band--ink rjj-booksec" id="rjj-book">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha384-sHL9NAb7lN7rfvG5lfHpm643Xkcjzp4jFvuavGOndn6pjVqS6ny56CAt3nsEVT4H" crossorigin="anonymous">
+<style>
+.rjj-bookgrid{display:grid;grid-template-columns:1fr 420px;gap:var(--rjj-space-10);align-items:start}
+.rjj-book__h{font:var(--rjj-weight-hairline) clamp(36px,4.4vw,60px)/1 var(--rjj-font-display);letter-spacing:var(--rjj-tracking-hero);color:var(--rjj-paper-000);margin:var(--rjj-space-5) 0 0}
+.rjj-book__p{font:var(--rjj-type-body);color:rgba(255,255,255,.76);max-width:52ch;margin:var(--rjj-space-6) 0 0;line-height:1.8}
+.rjj-book__meta{display:grid;grid-template-columns:1fr 1fr;gap:var(--rjj-space-6);margin-top:var(--rjj-space-8);border-top:1px solid rgba(255,255,255,.22);padding-top:var(--rjj-space-6)}
+.rjj-bm__k{display:block;font:var(--rjj-type-eyebrow);letter-spacing:var(--rjj-tracking-eyebrow);text-transform:uppercase;color:rgba(255,255,255,.55)}
+.rjj-bm__v{display:block;margin-top:var(--rjj-space-3);font:var(--rjj-type-body-sm);font-size:var(--rjj-text-sm);line-height:1.7;color:rgba(255,255,255,.85)}
+.rjj-bm__tel{font:var(--rjj-weight-medium) 22px/1.2 var(--rjj-font-display);color:var(--rjj-paper-000)}
+.rjj-bm__tel:hover{color:var(--rjj-sand-500)}
+.rjj-map{position:relative;margin-top:var(--rjj-space-7);height:240px;overflow:hidden}
+.rjj-map__canvas{position:absolute;inset:0;filter:grayscale(1) contrast(.92) brightness(.86)}
+.rjj-map__canvas .leaflet-container{background:var(--rjj-ink-900)}
+.rjj-map__canvas .leaflet-control-attribution{font-size:9px}
+.rjj-map__lab{position:absolute;left:0;bottom:0;z-index:500;background:var(--rjj-ink-900);color:var(--rjj-paper-000);font:var(--rjj-type-eyebrow);letter-spacing:var(--rjj-tracking-eyebrow);text-transform:uppercase;padding:10px 16px}
+.rjj-bf__eb{font:var(--rjj-type-eyebrow);letter-spacing:var(--rjj-tracking-eyebrow);text-transform:uppercase;color:var(--rjj-sand-700);margin-bottom:var(--rjj-space-6)}
+.rjj-bf{display:flex;flex-direction:column;gap:var(--rjj-space-5)}
+.rjj-bf .rjj-btn{margin-top:8px}
+.rjj-bf__note{font:var(--rjj-type-body-sm);font-size:var(--rjj-text-xs);line-height:1.7;color:var(--rjj-text-subtle);margin:0}
+@media (max-width:1080px){ .rjj-bookgrid{grid-template-columns:1fr;gap:var(--rjj-space-8)} }
+@media (max-width:640px){ .rjj-book__meta{grid-template-columns:1fr} }
+</style>
+
+  <div class="rjj-wrap rjj-bookgrid">
+    <div>
+      <div class="rjj-eyebrow rjj-eyebrow--inverse">Step one of one</div>
+      <h2 class="rjj-book__h">Claim the $25 mat pass</h2>
+      <p class="rjj-book__p">Two classes, loaner gi, no contract. Pick a class now or leave us your details and a coach will call you today to find one that fits.</p>
+      <div class="rjj-book__meta">
+        <div><span class="rjj-bm__k">Where</span><span class="rjj-bm__v">6465 E. Mockingbird Lane.<br>Suite 350. Dallas, Tx</span></div>
+        <div><span class="rjj-bm__k">Phone</span><a class="rjj-bm__v rjj-bm__tel" href="tel:945269010">945-269-010</a></div>
+      </div>
+      <div class="rjj-map">
+        <div class="rjj-map__canvas" data-rjj-map></div>
+        <span class="rjj-map__lab">Map · Lake Highlands, Dallas</span>
+      </div>
+    </div>
+
+    <div class="rjj-card">
+      <div class="rjj-bf__eb">Book your first class</div>
+      <!-- ▼▼ REPLACE FROM HERE with Elementor Forms or the Wodify embed ▼▼ -->
+      <div class="rjj-bf">
+        <label class="rjj-field"><span>First name</span><input type="text" placeholder="Marcus"></label>
+        <label class="rjj-field"><span>Mobile</span><input type="tel" placeholder="(214) 555-0100"></label>
+        <label class="rjj-field"><span>Email</span><input type="email" placeholder="you@email.com"></label>
+        <label class="rjj-field"><span>Which class do you want first?</span>
+          <span class="rjj-selwrap">
+            <select>
+              <option value="a">Fundamentals — weekday 6:30pm</option>
+              <option value="b">Fundamentals — weekday 6:00am</option>
+              <option value="c">Fundamentals — Saturday 9:00am</option>
+              <option value="d">No-Gi — weekday 12:00pm</option>
+              <option value="e">I have trained before — open mat</option>
+            </select>
+          </span>
+        </label>
+        <button type="button" class="rjj-btn rjj-btn--block">Pay $25 and book</button>
+        <p class="rjj-bf__note">Wodify booking embed sits here in the build. <span class="rjj-mono">utm_source</span> and <span class="rjj-mono">gclid</span> pass through as hidden fields.</p>
+      </div>
+      <!-- ▲▲ REPLACE TO HERE ▲▲ -->
+    </div>
+  </div>
+
+<script>
+(function(){
+  var s = document.currentScript;
+  var root = s ? s.closest('.rjj-booksec')
+              : document.querySelector('.rjj-booksec:not([data-rjj-init])');
+  if (!root || root.dataset.rjjInit) return;
+  root.dataset.rjjInit = '1';
+
+  var el = root.querySelector('[data-rjj-map]');
+  if (!el) return;
+  var LAT = 32.8377, LON = -96.7462;
+
+  function draw(){
+    if (!window.L || el.dataset.drawn) return;
+    el.dataset.drawn = '1';
+    var map = L.map(el, {center:[LAT,LON], zoom:14, scrollWheelZoom:false,
+                         zoomControl:false, attributionControl:true});
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+                {attribution:'&copy; OpenStreetMap contributors'}).addTo(map);
+    L.circleMarker([LAT,LON], {radius:8, color:'#fff', weight:2,
+                               fillColor:'#000', fillOpacity:1}).addTo(map);
+  }
+
+  if (window.L) { draw(); return; }
+  var existing = document.querySelector('script[data-rjj-leaflet]');
+  if (existing) { existing.addEventListener('load', draw); return; }
+  var tag = document.createElement('script');
+  tag.src = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js';
+  tag.integrity = 'sha384-cxOPjt7s7Iz04uaHJceBmS+qpjv2JkIHNVcuOrM+YHwZOmJGBXI00mdUXEq65HTH';
+  tag.crossOrigin = 'anonymous';
+  tag.setAttribute('data-rjj-leaflet','1');
+  tag.onload = draw;
+  document.head.appendChild(tag);
+})();
+</script>
+</div>
+
+
+<!-- RIO · 10 FOOTER -->
+<div class="rjj rjj-foot">
+<style>
+.rjj-foot{background:var(--rjj-ink-900);border-top:1px solid rgba(255,255,255,.14);padding:var(--rjj-space-7) 0}
+.rjj-foot__in{display:flex;align-items:center;gap:var(--rjj-space-6);font:var(--rjj-type-body-sm);font-size:var(--rjj-text-xs);color:rgba(255,255,255,.55)}
+.rjj-foot__mark{height:28px;width:auto}
+</style>
+  <div class="rjj-wrap rjj-foot__in">
+    <img class="rjj-foot__mark" src="assets/logo-mark-white.png" alt="Rio Jiu-Jitsu" width="28" height="28">
+    <span>Rio Jiu-Jitsu Lifestyle · Lake Highlands, Dallas · Jiu-Jitsu goes beyond the mat.</span>
+  </div>
+</div>
+
+
+<!-- RIO · 11 STICKY MOBILE CTA — fixed bar, only shows at ≤640px.
+     Paste last. It reserves space at the bottom of the page for itself. -->
+<div class="rjj rjj-sticky">
+<style>
+.rjj-sticky{display:none;position:fixed;left:0;right:0;bottom:0;z-index:9999;background:var(--rjj-ink-900);border-top:1px solid rgba(255,255,255,.18);padding:10px 12px;gap:10px}
+.rjj-sticky a{flex:1;display:flex;align-items:center;justify-content:center;min-height:52px;border-radius:var(--rjj-radius-pill);font:var(--rjj-weight-medium) var(--rjj-text-sm)/1 var(--rjj-font-display);letter-spacing:.1em;text-transform:uppercase}
+.rjj-sticky__call{border:1px solid rgba(255,255,255,.55);color:var(--rjj-paper-000)}
+.rjj-sticky__call:hover{color:var(--rjj-paper-000)}
+.rjj-sticky__cta{background:var(--rjj-paper-000);color:var(--rjj-ink-900)}
+.rjj-sticky__cta:hover{color:var(--rjj-ink-900)}
+@media (max-width:640px){
+  .rjj-sticky{display:flex}
+  body:has(.rjj-sticky){padding-bottom:76px}
+}
+</style>
+  <a class="rjj-sticky__call" href="tel:945269010">Call</a>
+  <a class="rjj-sticky__cta" href="#rjj-book">Claim $25 mat pass</a>
+</div>
+
+</body>
+</html>
